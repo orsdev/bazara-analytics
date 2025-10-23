@@ -6,7 +6,7 @@ export const SplashScreen = () => {
       className="flex items-center justify-center h-screen w-full bg-background z-50"
       data-testid="splash-screen"
     >
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center justify-center">
         <Image
           src="/logo.svg"
           alt="Bazara Logo"
@@ -14,7 +14,6 @@ export const SplashScreen = () => {
           height={22}
           className="w-[86px] h-[22px] object-contain animate-pulse"
         />
-        <p className="text-burnt-orange">Please wait...</p>
       </div>
     </div>
   );

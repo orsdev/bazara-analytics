@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { setCookie } from 'cookies-next';
-import { authTokenKey, cookieOptions } from '@/constants';
-import { isDev } from '@/utils';
+
+export const mockToken =
+  'mock-token-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTUxNjIzOTAyMn0.mock_signature';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,22 +12,11 @@ export async function POST(request: NextRequest) {
       throw new Error('Invalid credentials');
     }
 
-    const mockToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTUxNjIzOTAyMn0.mock_signature';
-
     const nextResponse = NextResponse.json({
       data: {
         token: mockToken
       },
       success: true
-    });
-
-    const options = isDev() ? cookieOptions.dev() : cookieOptions.prod();
-    setCookie(authTokenKey, mockToken, {
-      res: nextResponse,
-      httpOnly: true,
-      path: '/',
-      ...options
     });
 
     return nextResponse;

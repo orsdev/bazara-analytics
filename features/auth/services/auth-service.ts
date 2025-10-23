@@ -5,6 +5,9 @@ export const authService = {
   keys: {
     profile: ['profile'] as const
   },
+  getUser: () => ({
+    url: '/auth/me'
+  }),
   login: (data: LoginPayload): AxiosRequestConfig => ({
     url: '/auth/login',
     method: 'POST',

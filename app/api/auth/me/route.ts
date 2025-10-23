@@ -4,7 +4,14 @@ import { authTokenKey } from '@/constants';
 
 export async function GET(request: NextRequest) {
   try {
-    const token = getCookie(authTokenKey, { req: request });
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    const authHeader = request.headers.get('authorization');
+    let token = authHeader?.replace('Bearer ', '');
+
+    if (!token) {
+      token = getCookie(authTokenKey, { req: request }) as string;
+    }
 
     if (!token || typeof token !== 'string') {
       return NextResponse.json(
@@ -13,7 +20,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    if (!token.startsWith('mock-jwt-token-')) {
+    if (!token.startsWith('mock-token-')) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 

@@ -2,6 +2,7 @@ import { ChildrenProps } from '@/types';
 import { cookies } from 'next/headers';
 import { authTokenKey } from '@/constants';
 import { redirect } from 'next/navigation';
+import { AuthProvider } from '@/providers';
 
 export default async function MainLayout({ children }: ChildrenProps) {
   const accessToken = (await cookies()).get(authTokenKey)?.value;
@@ -10,5 +11,5 @@ export default async function MainLayout({ children }: ChildrenProps) {
     return redirect('/sign-in');
   }
 
-  return <>{children}</>;
+  return <AuthProvider>{children}</AuthProvider>;
 }

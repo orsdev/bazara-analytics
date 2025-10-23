@@ -26,6 +26,7 @@ module.exports = {
     // Handle module aliases
     '^@/components/(.*)$': '<rootDir>/components/$1',
     '^@/lib/(.*)$': '<rootDir>/lib/$1',
+    '^@/lib$': '<rootDir>/lib',
     '^@/styles/(.*)$': '<rootDir>/styles/$1',
     '^@/features/(.*)$': '<rootDir>/features/$1',
     '^@/hooks/(.*)$': '<rootDir>/hooks/$1',
