@@ -18,12 +18,12 @@ export const PasswordInput = ({ ...props }: PasswordInputProps) => {
       <div className="flex items-center justify-center absolute right-[1.2rem]">
         <button
           type="button"
-          className="cursor-pointer opacity-50"
+          className="cursor-pointer opacity-50 scale-75"
           aria-label={isVisible ? 'Hide password' : 'Show password'}
           aria-pressed={isVisible}
           onClick={toggleVisibility}
         >
-          {isVisible ? <Eye size={16} /> : <EyeOff size={16} />}
+          {isVisible ? <Eye size={24} /> : <EyeOff size={24} />}
         </button>
       </div>
     </div>
