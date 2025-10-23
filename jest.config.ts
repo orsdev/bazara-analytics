@@ -3,19 +3,13 @@ module.exports = {
   // on node 14.x coverage provider v8 offers good speed and more or less good report
   coverageProvider: 'v8',
   collectCoverageFrom: [
-    '**/*.{js,jsx,ts,tsx}',
+    'components/**/*.{js,jsx,ts,tsx}',
+    'features/**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
-    '!**/.next/**',
-    '!**/coverage/**',
-    '!jest.config.ts',
-    '!next.config.ts',
-    '!lib/test-utils.tsx',
     '!**/__tests__/**',
     '!**/__mocks__/**',
-    '!styles/fonts.ts',
-    '!app/layout.tsx',
-    '!app/page.tsx'
+    '!**/index.ts'
   ],
   moduleNameMapper: {
     // Handle CSS imports (with CSS modules)
@@ -38,6 +32,10 @@ module.exports = {
     '^@/providers/(.*)$': '<rootDir>/providers/$1',
     '^@/types/(.*)$': '<rootDir>/types/$1',
     '^@/data/(.*)$': '<rootDir>/data/$1',
+    '^@/utils/(.*)$': '<rootDir>/utils/$1',
+    '^@/utils$': '<rootDir>/utils',
+    '^@/constants/(.*)$': '<rootDir>/constants/$1',
+    '^@/constants$': '<rootDir>/constants',
 
     // Handle @next/font
     '@next/font/(.*)': `<rootDir>/__mocks__/nextFontMock.js`,
@@ -67,5 +65,8 @@ module.exports = {
       }
     ]
   },
-  transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$']
+  transformIgnorePatterns: [
+    '/node_modules/(?!(react-error-boundary)/)',
+    '^.+\\.module\\.(css|sass|scss)$'
+  ]
 };

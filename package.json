@@ -13,7 +13,10 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-slot": "^1.2.3",
+    "@tanstack/react-query": "^5.90.5",
+    "@tanstack/react-query-devtools": "^5.90.2",
     "@tanstack/react-table": "^8.21.3",
     "axios": "^1.12.2",
     "class-variance-authority": "^0.7.1",
@@ -24,7 +27,9 @@
     "nextjs-toploader": "^3.9.17",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "react-error-boundary": "^6.0.0",
     "react-hook-form": "^7.65.0",
+    "react-hot-toast": "^2.6.0",
     "tailwind-merge": "^3.3.1",
     "yup": "^1.7.1",
     "zustand": "^5.0.8"

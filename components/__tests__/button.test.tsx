@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@/lib/test-utils';
-import { Button } from '../ui/button';
+import { Button } from '../ui/buttons/button';
 
 describe('Button', () => {
   it('renders correctly', () => {

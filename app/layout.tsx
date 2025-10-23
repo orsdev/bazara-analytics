@@ -1,5 +1,8 @@
+import { ClientErrorBoundary } from '@/components/client-error-boundary';
+import { ReactQueryClientProvider } from '@/providers/query-provider';
 import { inter } from '@/styles/fonts';
 import type { Metadata } from 'next';
+import { Toaster } from 'react-hot-toast';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
@@ -15,7 +18,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased`}>
+        <ClientErrorBoundary>
+          <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
+        </ClientErrorBoundary>
+        <Toaster
+          toastOptions={{
+            duration: 6000
+          }}
+        />
+      </body>
     </html>
   );
 }
