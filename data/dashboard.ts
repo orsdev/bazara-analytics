@@ -85,7 +85,7 @@ export const pendingApprovalsData: PendingApproval = {
 };
 
 export const categoryResults = {
-  currency: 'NGN',
+  currency: 'USD',
   categories: [
     { id: 'category-1', name: 'Marketing', value: 45000 },
     { id: 'category-2', name: 'HR', value: 65000 },

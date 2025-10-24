@@ -41,6 +41,7 @@ export interface Category {
   id: string;
   name: string;
   value: number;
+  [key: string]: string | number;
 }
 
 export interface CategoryResults {

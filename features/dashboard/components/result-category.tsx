@@ -3,9 +3,9 @@
 import { Card, PinchSVGIcon } from '@/components/ui';
 import { EllipsisVerticalIcon } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { categoryResults } from '@/data/dashboard';
 import { CategoryResults } from '../types';
 import { formatCurrency } from '@/utils';
+import { useCategoryResults } from '../hooks/use-category-results';
 
 const colors = ['#FFC300', '#00C033', '#9A00C0', '#C0006A'];
 
@@ -28,10 +28,19 @@ const CustomLegend = ({
 );
 
 export const ResultCategory = () => {
-  const totalValue = categoryResults.categories.reduce(
-    (sum, item) => sum + item.value,
-    0
-  );
+  const { currency, categories, isLoading } = useCategoryResults();
+
+  const totalValue = categories.reduce((sum, item) => sum + item.value, 0);
+
+  if (isLoading) {
+    return (
+      <Card className="p-4 pb-5.5 rounded-[0.75rem] shadow-[0px_0px_4px_rgba(150,143,143,0.15)] gap-0">
+        <div className="h-8 bg-gray-100 rounded animate-pulse mb-4" />
+        <div className="border w-full h-px my-4" />
+        <div className="h-64 bg-gray-100 rounded animate-pulse" />
+      </Card>
+    );
+  }
 
   return (
     <Card className="p-4 pb-5.5 rounded-[0.75rem] shadow-[0px_0px_4px_rgba(150,143,143,0.15)] gap-0">
@@ -63,7 +72,7 @@ export const ResultCategory = () => {
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
-                data={categoryResults.categories}
+                data={categories}
                 cx="50%"
                 cy="50%"
                 innerRadius={80}
@@ -72,7 +81,7 @@ export const ResultCategory = () => {
                 cornerRadius={8}
                 dataKey="value"
               >
-                {categoryResults.categories.map((entry, index) => (
+                {categories.map((entry, index) => (
                   <Cell key={entry.id} fill={colors[index]} stroke="none" />
                 ))}
               </Pie>
@@ -81,13 +90,13 @@ export const ResultCategory = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
               <p className="text-xl font-bold">
-                {formatCurrency({ amount: totalValue, currency: 'NGN' })}
+                {formatCurrency({ amount: totalValue, currency })}
               </p>
               <p className="text-sm font-medium opacity-60">Total Spent</p>
             </div>
           </div>
         </div>
-        <CustomLegend categories={categoryResults.categories} />
+        <CustomLegend categories={categories} />
       </div>
     </Card>
   );
