@@ -8,7 +8,7 @@ export const ResponseTime = () => {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         <div className="p-4 rounded-[0.75rem] shadow-[0px_0px_4px_rgba(150,143,143,0.15)] animate-pulse">
           <div className="h-8 bg-gray-100 rounded mb-4" />
           <div className="h-16 bg-gray-100 rounded" />
@@ -22,7 +22,7 @@ export const ResponseTime = () => {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid md:grid-cols-2 gap-6">
       {responseTime.map((item) => (
         <ResponseTimeItem
           key={item.id}
