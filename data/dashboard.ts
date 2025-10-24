@@ -131,3 +131,78 @@ export const responseTimeData = {
     ]
   }
 };
+
+export const changeRequestData = [
+  {
+    date: '2024-01-01T09:00:00+01:00',
+    emergency: 30,
+    normal: 50,
+    standard: 0
+  },
+  {
+    date: '2024-02-01T09:00:00+01:00',
+    emergency: 50,
+    normal: 70,
+    standard: 30
+  },
+  {
+    date: '2024-03-01T09:00:00+01:00',
+    emergency: 140,
+    normal: 100,
+    standard: 110
+  },
+  {
+    date: '2024-05-01T09:00:00+01:00',
+    emergency: 110,
+    normal: 70,
+    standard: 130
+  },
+  {
+    date: '2024-08-01T09:00:00+01:00',
+    emergency: 80,
+    normal: 90,
+    standard: 100
+  },
+  {
+    date: '2024-10-01T09:00:00+01:00',
+    emergency: 100,
+    normal: 120,
+    standard: 70
+  },
+  {
+    date: '2024-12-01T09:00:00+01:00',
+    emergency: 130,
+    normal: 130,
+    standard: 90
+  },
+  {
+    date: '2025-01-01T09:00:00+00:00',
+    emergency: 100,
+    normal: 110,
+    standard: 120
+  },
+  {
+    date: '2025-04-01T09:00:00+00:00',
+    emergency: 70,
+    normal: 80,
+    standard: 90
+  },
+  {
+    date: '2025-07-01T09:00:00+00:00',
+    emergency: 90,
+    normal: 100,
+    standard: 60
+  },
+  {
+    date: '2025-08-01T09:00:00+00:00',
+    emergency: 120,
+    normal: 130,
+    standard: 80
+  },
+  {
+    date: '2025-10-01T09:00:00+00:00',
+    emergency: 90,
+    normal: 100,
+    standard: 110
+  }
+];

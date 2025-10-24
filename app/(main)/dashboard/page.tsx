@@ -4,7 +4,8 @@ import {
   ResolvedTickets,
   PendingTicket,
   PendingApproval,
-  ResultCategory
+  ResultCategory,
+  ChangeRequest
 } from '@/features/dashboard/components';
 import { ResponseTime } from '@/features/dashboard/components';
 
@@ -23,6 +24,10 @@ export default function DashboardPage() {
           <PendingApproval />
           <ResultCategory />
         </div>
+      </div>
+
+      <div className="mt-6">
+        <ChangeRequest />
       </div>
     </div>
   );

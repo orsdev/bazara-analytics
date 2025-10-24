@@ -73,3 +73,12 @@ export interface TransformedResponseTime {
   };
   chartData: { value: number }[];
 }
+
+export interface ChangeRequestItem {
+  date: string;
+  emergency: number;
+  normal: number;
+  standard: number;
+}
+
+export type ChangeRequestData = ChangeRequestItem[];

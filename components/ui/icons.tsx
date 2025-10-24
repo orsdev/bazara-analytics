@@ -298,3 +298,71 @@ export const UserCircleSVGIcon = ({
     />
   </svg>
 );
+
+export const CalendarDaysSVGIcon = ({
+  size = 16,
+  ...restProps
+}: CustomIconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...restProps}
+  >
+    <path
+      d="M5.33337 1.33334V3.33334"
+      stroke="#1659E6"
+      strokeWidth="1.5"
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10.6666 1.33334V3.33334"
+      stroke="#1659E6"
+      strokeWidth="1.5"
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M2.33337 6.06H13.6667"
+      stroke="#1659E6"
+      strokeWidth="1.5"
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14 5.66668V11.3333C14 13.3333 13 14.6667 10.6667 14.6667H5.33333C3 14.6667 2 13.3333 2 11.3333V5.66668C2 3.66668 3 2.33334 5.33333 2.33334H10.6667C13 2.33334 14 3.66668 14 5.66668Z"
+      stroke="#1659E6"
+      strokeWidth="1.5"
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.99703 9.13335H8.00302"
+      stroke="#1659E6"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5.5295 9.13335H5.53549"
+      stroke="#1659E6"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5.5295 11.1334H5.53549"
+      stroke="#1659E6"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);

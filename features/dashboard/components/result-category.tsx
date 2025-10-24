@@ -1,11 +1,10 @@
 'use client';
 
-import { Card, PinchSVGIcon } from '@/components/ui';
-import { EllipsisVerticalIcon } from 'lucide-react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { CategoryResults } from '../types';
+import { Card, DefaultCard, PinchSVGIcon } from '@/components/ui';
 import { formatCurrency } from '@/utils';
+import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 import { useCategoryResults } from '../hooks/use-category-results';
+import { CategoryResults } from '../types';
 
 const colors = ['#FFC300', '#00C033', '#9A00C0', '#C0006A'];
 
@@ -43,30 +42,11 @@ export const ResultCategory = () => {
   }
 
   return (
-    <Card className="p-4 pb-5.5 rounded-[0.75rem] shadow-[0px_0px_4px_rgba(150,143,143,0.15)] gap-0">
-      <div className="flex gap-6 items-center justify-between">
-        <div className="flex gap-2 items-center justify-between w-full">
-          <div className="flex gap-2.5 items-center">
-            <button
-              className="cursor-pointer flex items-center text-primary"
-              type="button"
-              aria-label="Expand"
-            >
-              <PinchSVGIcon />
-            </button>
-            <p className="text-sm font-bold">Change Result By Category</p>
-          </div>
-          <button
-            className="cursor-pointer flex items-center border w-5 h-5 rounded-[5px]"
-            type="button"
-            aria-label="More options"
-          >
-            <EllipsisVerticalIcon size={20} />
-          </button>
-        </div>
-      </div>
-
-      <hr className="w-full block my-3" />
+    <DefaultCard
+      title="Change Result By Category"
+      headerIcon={<PinchSVGIcon />}
+      handleMoreOptions={() => {}}
+    >
       <div className="w-full">
         <div className="relative h-[12.06rem] w-full">
           <ResponsiveContainer width="100%" height="100%">
@@ -98,6 +78,6 @@ export const ResultCategory = () => {
         </div>
         <CustomLegend categories={categories} />
       </div>
-    </Card>
+    </DefaultCard>
   );
 };
