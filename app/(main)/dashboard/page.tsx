@@ -3,7 +3,8 @@ import {
   MetricsGrid,
   ResolvedTickets,
   PendingTicket,
-  PendingApproval
+  PendingApproval,
+  ResultCategory
 } from '@/features/dashboard/components';
 
 export default function DashboardPage() {
@@ -18,6 +19,7 @@ export default function DashboardPage() {
         <div className="flex flex-col gap-6">
           <PendingTicket />
           <PendingApproval />
+          <ResultCategory />
         </div>
       </div>
     </div>

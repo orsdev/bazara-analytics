@@ -83,3 +83,13 @@ export const pendingApprovalsData: PendingApproval = {
   id: 'pending-approvals',
   count: 2
 };
+
+export const categoryResults = {
+  currency: 'NGN',
+  categories: [
+    { id: 'category-1', name: 'Marketing', value: 45000 },
+    { id: 'category-2', name: 'HR', value: 65000 },
+    { id: 'category-3', name: 'Sales', value: 89991 },
+    { id: 'category-4', name: 'Support', value: 40000 }
+  ]
+};

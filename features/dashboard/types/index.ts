@@ -36,3 +36,14 @@ export interface PendingApproval {
   id: string;
   count: number;
 }
+
+export interface Category {
+  id: string;
+  name: string;
+  value: number;
+}
+
+export interface CategoryResults {
+  currency: string;
+  categories: Category[];
+}
