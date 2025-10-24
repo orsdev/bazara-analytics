@@ -39,7 +39,7 @@ export const MetricsGridItem = ({
     >
       <div>
         <p className="text-sm font-normal mb-4">{title}</p>
-        <div className="flex gap-4 w-full">
+        <div className="w-full">
           <div className="flex gap-2 items-center justify-between w-full">
             <div className="flex-1">
               <h3 className="text-lg font-bold text-black">

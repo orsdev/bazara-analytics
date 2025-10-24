@@ -40,6 +40,11 @@ export const resolvedTicketsData: ResolvedTicketAgent[] = [
     id: 'agent-7',
     name: 'Agent 7',
     ticketsResolved: 820
+  },
+  {
+    id: 'agent-8',
+    name: 'Agent 8',
+    ticketsResolved: 820
   }
 ];
 
@@ -85,11 +90,44 @@ export const pendingApprovalsData: PendingApproval = {
 };
 
 export const categoryResults = {
-  currency: 'NGN',
+  currency: 'USD',
   categories: [
     { id: 'category-1', name: 'Marketing', value: 45000 },
     { id: 'category-2', name: 'HR', value: 65000 },
     { id: 'category-3', name: 'Sales', value: 89991 },
     { id: 'category-4', name: 'Support', value: 40000 }
   ]
+};
+
+export const responseTimeData = {
+  incidentResponseTime: {
+    id: 'incident-response-time',
+    currentValue: '4:00:01',
+    previousValue: '4:30:00',
+    comparisonRange: 'week',
+    chartData: [
+      { value: 15 },
+      { value: 18 },
+      { value: 14 },
+      { value: 12 },
+      { value: 16 },
+      { value: 11 },
+      { value: 12 }
+    ]
+  },
+  changeResponseTime: {
+    id: 'change-response-time',
+    currentValue: '0:04:01',
+    previousValue: '0:03:30',
+    comparisonRange: 'week',
+    chartData: [
+      { value: 10 },
+      { value: 12 },
+      { value: 9 },
+      { value: 8 },
+      { value: 11 },
+      { value: 7 },
+      { value: 8 }
+    ]
+  }
 };

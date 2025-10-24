@@ -6,6 +6,7 @@ import {
   PendingApproval,
   ResultCategory
 } from '@/features/dashboard/components';
+import { ResponseTime } from '@/features/dashboard/components';
 
 export default function DashboardPage() {
   return (
@@ -13,8 +14,9 @@ export default function DashboardPage() {
       <DashboardHeader />
       <MetricsGrid />
       <div className="grid lg:grid-cols-[1fr_27rem] gap-6">
-        <div className="">
+        <div className="flex gap-6 flex-col">
           <ResolvedTickets />
+          <ResponseTime />
         </div>
         <div className="flex flex-col gap-6">
           <PendingTicket />
