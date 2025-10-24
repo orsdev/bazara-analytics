@@ -3,7 +3,7 @@ export const dashboardService = {
     metrics: ['dashboard', 'metrics'] as const
   },
   getMetrics: () => ({
-    url: '/dashboard/metricss',
+    url: '/dashboard/metrics',
     method: 'GET'
   })
 };
