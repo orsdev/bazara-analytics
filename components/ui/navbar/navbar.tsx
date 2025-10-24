@@ -7,7 +7,7 @@ import { MobileNavigation } from './mobile-navigation';
 import { NavbarLayout, NavbarSection } from './navbar-layout';
 import { NavigationMenu } from './navigation-menu';
 import { ActionButtons } from './action-buttons';
-import { NavbarSearchBar } from './search-bar';
+import { NavbarSearchBar } from './navbar-search-bar';
 
 interface NavbarProps {
   onNotificationClick?: () => void;

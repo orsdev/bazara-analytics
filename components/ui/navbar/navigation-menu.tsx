@@ -12,16 +12,9 @@ interface MenuItem {
 
 interface NavigationMenuProps extends ClassNameProps {
   items: MenuItem[];
-  orientation?: 'horizontal' | 'vertical';
-  variant?: 'default' | 'compact';
 }
 
-export function NavigationMenu({
-  items,
-  className,
-  orientation = 'horizontal',
-  variant = 'default'
-}: NavigationMenuProps) {
+export function NavigationMenu({ items, className }: NavigationMenuProps) {
   const pathname = usePathname();
 
   const isRouteActive = (targetRoute: string, currentPath: string) => {
@@ -36,17 +29,7 @@ export function NavigationMenu({
   };
 
   return (
-    <nav
-      className={cn(
-        'flex items-center justify-center',
-        {
-          'gap-8': orientation === 'horizontal' && variant === 'default',
-          'gap-4': orientation === 'horizontal' && variant === 'compact',
-          'flex-col gap-3': orientation === 'vertical'
-        },
-        className
-      )}
-    >
+    <nav className={cn('flex items-center justify-center gap-8', className)}>
       {items.map((item) => {
         const isActive = isRouteActive(item.href, pathname);
         return (
