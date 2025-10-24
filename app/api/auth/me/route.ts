@@ -1,17 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { getCookie } from 'cookies-next';
 import { authTokenKey } from '@/constants';
+import { cookies } from 'next/headers';
+import { NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 5000));
 
-    const authHeader = request.headers.get('authorization');
-    let token = authHeader?.replace('Bearer ', '');
-
-    if (!token) {
-      token = getCookie(authTokenKey, { req: request }) as string;
-    }
+    const cookieStore = await cookies();
+    const token = cookieStore.get(authTokenKey)?.value;
 
     if (!token || typeof token !== 'string') {
       return NextResponse.json(

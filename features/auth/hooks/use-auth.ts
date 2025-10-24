@@ -9,7 +9,7 @@ import { LoginPayload } from '../types';
 import { errorHandler } from '@/utils';
 
 export function useAuth() {
-  const { handleSaveToken, handleClearToken } = useAuthSlice();
+  const { handleSetAuthenticated, handleLogout } = useAuthSlice();
   const mutation = useCustomMutation();
 
   const router = useRouter();
@@ -24,7 +24,7 @@ export function useAuth() {
         const response = data as { data: { token: string } };
         const token = response?.data?.token;
         if (token) {
-          handleSaveToken(token);
+          handleSetAuthenticated(true);
           router.push('/dashboard');
         } else {
           toast.error('Token not found');
@@ -40,8 +40,8 @@ export function useAuth() {
         toast.error(errorMessage);
       },
       onSuccess() {
-        handleClearToken('auth_token');
-        router.push('/sign-in');
+        handleLogout();
+        router.push('/login');
       }
     });
   };

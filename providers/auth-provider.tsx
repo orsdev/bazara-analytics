@@ -9,20 +9,20 @@ import { useEffect } from 'react';
 
 export function AuthProvider({ children }: ChildrenProps) {
   const router = useRouter();
-  const { handleLoadToken, accessToken, hasCheckedToken } = useAuthSlice();
+  const { handleCheckAuth, isAuthenticated, hasCheckedToken } = useAuthSlice();
   const { user } = useUser();
 
   useEffect(() => {
-    handleLoadToken();
-  }, [handleLoadToken]);
+    handleCheckAuth();
+  }, [handleCheckAuth]);
 
   useEffect(() => {
-    if (!accessToken && hasCheckedToken) {
-      router.push('/sign-in');
+    if (!isAuthenticated && hasCheckedToken) {
+      router.push('/login');
     }
-  }, [accessToken, hasCheckedToken, router]);
+  }, [isAuthenticated, hasCheckedToken, router]);
 
-  if (accessToken && !user) {
+  if (isAuthenticated && !user) {
     return <SplashScreen />;
   }
 

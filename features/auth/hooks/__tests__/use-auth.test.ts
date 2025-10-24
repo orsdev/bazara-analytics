@@ -42,8 +42,8 @@ const mockErrorHandler = require('@/utils').errorHandler;
 describe('useAuth', () => {
   const mockMutate = jest.fn();
   const mockPush = jest.fn();
-  const mockHandleSaveToken = jest.fn();
-  const mockHandleClearToken = jest.fn();
+  const mockHandleSetAuthenticated = jest.fn();
+  const mockHandleLogout = jest.fn();
 
   beforeEach(() => {
     mockUseCustomMutation.mockReturnValue({
@@ -56,8 +56,8 @@ describe('useAuth', () => {
     });
 
     mockUseAuthSlice.mockReturnValue({
-      handleSaveToken: mockHandleSaveToken,
-      handleClearToken: mockHandleClearToken
+      handleSetAuthenticated: mockHandleSetAuthenticated,
+      handleLogout: mockHandleLogout
     });
 
     mockAuthService.login.mockReturnValue({
@@ -116,7 +116,7 @@ describe('useAuth', () => {
       result.current.login(credentials);
     });
 
-    expect(mockHandleSaveToken).toHaveBeenCalledWith('mock-token');
+    expect(mockHandleSetAuthenticated).toHaveBeenCalledWith(true);
     expect(mockPush).toHaveBeenCalledWith('/dashboard');
   });
 
@@ -145,8 +145,8 @@ describe('useAuth', () => {
       result.current.logout();
     });
 
-    expect(mockHandleClearToken).toHaveBeenCalledWith('auth_token');
-    expect(mockPush).toHaveBeenCalledWith('/sign-in');
+    expect(mockHandleLogout).toHaveBeenCalled();
+    expect(mockPush).toHaveBeenCalledWith('/login');
   });
 
   it('handles login error', () => {
@@ -193,7 +193,7 @@ describe('useAuth', () => {
     });
 
     expect(mockToast.error).toHaveBeenCalledWith('Token not found');
-    expect(mockHandleSaveToken).not.toHaveBeenCalled();
+    expect(mockHandleSetAuthenticated).not.toHaveBeenCalled();
     expect(mockPush).not.toHaveBeenCalled();
   });
 

@@ -1,20 +1,15 @@
 import { act, renderHook } from '@testing-library/react';
 import { useAuthSlice } from '../auth-slice';
-import { authTokenKey } from '@/constants';
 
-jest.mock('@/utils', () => ({
-  isDev: jest.fn()
-}));
-
-jest.mock('cookies-next', () => ({
-  deleteCookie: jest.fn(),
-  getCookie: jest.fn(),
-  setCookie: jest.fn()
+// Mock the API module
+jest.mock('@/lib/api', () => ({
+  api: {
+    get: jest.fn()
+  }
 }));
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const mockDeleteCookie = require('cookies-next').deleteCookie;
-const mockGetCookie = require('cookies-next').getCookie;
+const mockApi = require('@/lib/api').api;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 describe('useAuthSlice', () => {
@@ -25,81 +20,90 @@ describe('useAuthSlice', () => {
   it('initializes with correct default state', () => {
     const { result } = renderHook(() => useAuthSlice());
 
-    expect(result.current.accessToken).toBe('');
+    expect(result.current.isAuthenticated).toBe(false);
     expect(result.current.hasCheckedToken).toBe(false);
   });
 
   it('has all required methods', () => {
     const { result } = renderHook(() => useAuthSlice());
 
-    expect(typeof result.current.handleLoadToken).toBe('function');
-    expect(typeof result.current.handleLogOut).toBe('function');
-    expect(typeof result.current.handleClearToken).toBe('function');
-    expect(typeof result.current.handleSaveToken).toBe('function');
+    expect(typeof result.current.handleCheckAuth).toBe('function');
+    expect(typeof result.current.handleLogout).toBe('function');
+    expect(typeof result.current.handleSetAuthenticated).toBe('function');
   });
 
-  describe('handleLoadToken', () => {
-    it('loads token from cookie and saves it', async () => {
-      mockGetCookie.mockResolvedValue('existing-token');
+  describe('handleCheckAuth', () => {
+    it('sets authenticated state when API call succeeds', async () => {
+      mockApi.get.mockResolvedValue({ data: { success: true } });
       const { result } = renderHook(() => useAuthSlice());
 
       await act(async () => {
-        await result.current.handleLoadToken();
+        await result.current.handleCheckAuth();
       });
 
-      expect(mockGetCookie).toHaveBeenCalledWith(authTokenKey);
+      expect(mockApi.get).toHaveBeenCalledWith('/auth/me', {
+        withCredentials: true
+      });
+      expect(result.current.isAuthenticated).toBe(true);
+      expect(result.current.hasCheckedToken).toBe(true);
     });
 
-    it('handles empty token from cookie', async () => {
-      mockGetCookie.mockResolvedValue('');
+    it('logs out when API call fails', async () => {
+      mockApi.get.mockRejectedValue(new Error('Unauthorized'));
       const { result } = renderHook(() => useAuthSlice());
 
       await act(async () => {
-        await result.current.handleLoadToken();
+        await result.current.handleCheckAuth();
       });
 
+      expect(result.current.isAuthenticated).toBe(false);
       expect(result.current.hasCheckedToken).toBe(true);
     });
   });
 
-  describe('handleLogOut', () => {
-    it('deletes cookie and resets state', async () => {
+  describe('handleLogout', () => {
+    it('resets state to initial values', async () => {
       const { result } = renderHook(() => useAuthSlice());
 
       // Set some initial state
       act(() => {
-        result.current.handleSaveToken(authTokenKey);
+        result.current.handleSetAuthenticated(true);
       });
 
       await act(async () => {
-        await result.current.handleLogOut();
+        await result.current.handleLogout();
       });
 
-      expect(mockDeleteCookie).toHaveBeenCalledWith(authTokenKey);
-      expect(result.current.accessToken).toBe('');
+      expect(result.current.isAuthenticated).toBe(false);
       expect(result.current.hasCheckedToken).toBe(false);
     });
   });
 
-  describe('handleClearToken', () => {
-    it('deletes cookie with provided key', async () => {
+  describe('handleSetAuthenticated', () => {
+    it('sets authentication state to true', () => {
       const { result } = renderHook(() => useAuthSlice());
 
-      await act(async () => {
-        await result.current.handleClearToken(authTokenKey);
+      act(() => {
+        result.current.handleSetAuthenticated(true);
       });
 
-      expect(mockDeleteCookie).toHaveBeenCalledWith(authTokenKey);
+      expect(result.current.isAuthenticated).toBe(true);
     });
 
-    it('does nothing when key is empty', async () => {
+    it('sets authentication state to false', () => {
       const { result } = renderHook(() => useAuthSlice());
 
-      await act(async () => {
-        await result.current.handleClearToken('');
+      // First set to true
+      act(() => {
+        result.current.handleSetAuthenticated(true);
       });
 
-      expect(mockDeleteCookie).not.toHaveBeenCalled();
+      // Then set to false
+      act(() => {
+        result.current.handleSetAuthenticated(false);
+      });
+
+      expect(result.current.isAuthenticated).toBe(false);
     });
   });
 });
