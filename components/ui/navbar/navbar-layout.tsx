@@ -1,27 +1,10 @@
+import { cn } from '@/lib';
 import { ChildrenProps, ClassNameProps } from '@/types';
-import { cn } from '@/lib/tw-merge';
 
-interface NavbarLayoutProps extends ChildrenProps, ClassNameProps {
-  variant?: 'default' | 'compact';
-}
-
-export function NavbarLayout({
-  children,
-  className,
-  variant = 'default'
-}: NavbarLayoutProps) {
+export function NavbarLayout({ children }: ChildrenProps) {
   return (
-    <nav
-      className={cn(
-        'w-full bg-white border-b py-4',
-        {
-          'px-5 sm:px-10': variant === 'default',
-          'px-4': variant === 'compact'
-        },
-        className
-      )}
-    >
-      <div className="flex items-center justify-between gap-6.5 max-w-xl2 mx-auto">
+    <nav className="w-full bg-white border-b py-4">
+      <div className="flex items-center justify-between gap-6.5 max-w-xl2 mx-auto px-5 sm:px-10">
         {children}
       </div>
     </nav>

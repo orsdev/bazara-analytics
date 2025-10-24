@@ -1,8 +1,6 @@
 'use client';
 
 import { menuItems } from '@/constants';
-import { useUser } from '@/features/auth/hooks';
-import { useAuthSlice } from '@/features/auth/slice/auth-slice';
 import { cn } from '@/lib';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'nextjs-toploader/app';
@@ -16,9 +14,7 @@ import { HamburgerSVGIcon } from '../icons';
 
 export function MobileNavigation() {
   const pathname = usePathname();
-  const { handleLogout } = useAuthSlice();
   const router = useRouter();
-  const { user } = useUser();
 
   const isRouteActive = (targetRoute: string, currentPath: string) => {
     if (!targetRoute) return false;
