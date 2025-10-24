@@ -7,7 +7,7 @@ import {
   CardAction,
   CardContent,
   CardFooter
-} from '../ui/card';
+} from '../ui/cards/card';
 
 describe('Card Components', () => {
   describe('Card', () => {
