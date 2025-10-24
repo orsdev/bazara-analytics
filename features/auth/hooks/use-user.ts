@@ -7,19 +7,20 @@ import { useAuthSlice } from '../slice/auth-slice';
 import { AuthUser } from '../types';
 
 export function useUser() {
-  const { accessToken, handleLogOut } = useAuthSlice();
+  const { handleLogout } = useAuthSlice();
 
   const getUser = async () => {
     try {
       const response = await api({
         method: 'get',
-        url: authService.getUser().url
+        url: authService.getUser().url,
+        withCredentials: true // Include HTTP-only cookies
       });
       const responseData = response.data as { data: AuthUser };
 
       return responseData;
     } catch (error: unknown) {
-      handleLogOut();
+      handleLogout();
       throw error;
     }
   };
@@ -29,8 +30,7 @@ export function useUser() {
       queryKey: authService.keys.profile,
       queryFn: getUser,
       staleTime: Infinity,
-      retry: 2,
-      enabled: !!accessToken
+      retry: 2
     }
   );
 

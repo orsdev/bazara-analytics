@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
-import { deleteCookie } from 'cookies-next';
-import { authTokenKey } from '@/constants';
+import { authTokenKey } from '@/constants/auth';
 
 export async function POST() {
   try {
     const nextResponse = NextResponse.json({ success: true });
-
-    deleteCookie(authTokenKey, {
-      res: nextResponse,
+    nextResponse.cookies.set(authTokenKey, '', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 0,
       path: '/'
     });
 

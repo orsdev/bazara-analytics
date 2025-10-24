@@ -8,10 +8,10 @@ export const authService = {
   getUser: () => ({
     url: '/auth/me'
   }),
-  login: (data: LoginPayload): AxiosRequestConfig => ({
+  login: (credentials: LoginPayload): AxiosRequestConfig => ({
     url: '/auth/login',
     method: 'POST',
-    data
+    data: credentials
   }),
   logout: (): AxiosRequestConfig => ({
     url: '/auth/logout',

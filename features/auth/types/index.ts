@@ -4,15 +4,16 @@ export interface LoginPayload {
 }
 
 export interface AuthUser {
+  id: string;
   email: string;
-  id?: string;
+  name: string;
+  avatar: string;
 }
 
 export interface AuthSliceState {
-  accessToken: string;
+  isAuthenticated: boolean;
   hasCheckedToken: boolean;
-  handleSaveToken(token: string): void;
-  handleLoadToken(): void;
-  handleLogOut(): void;
-  handleClearToken(key: string): void;
+  handleSetAuthenticated(isAuth: boolean): void;
+  handleCheckAuth(): void;
+  handleLogout(): void;
 }

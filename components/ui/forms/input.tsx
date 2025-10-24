@@ -2,7 +2,12 @@ import * as React from 'react';
 
 import { cn } from '@/lib/tw-merge';
 
-function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+}
+
+export const Input = ({ className, type, ...props }: InputProps) => {
   return (
     <input
       type={type}
@@ -16,6 +21,4 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
       {...props}
     />
   );
-}
-
-export { Input };
+};

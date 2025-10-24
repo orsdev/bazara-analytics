@@ -8,7 +8,7 @@ export const cookieOptions = {
     return {
       sameSite: 'lax' as const,
       secure: false,
-      httpOnly: false,
+      httpOnly: true,
       expires: expiryDate
     };
   },
@@ -18,7 +18,8 @@ export const cookieOptions = {
 
     return {
       secure: true,
-      sameSite: true,
+      sameSite: 'lax' as const,
+      httpOnly: true,
       expires: expiryDate
     };
   }

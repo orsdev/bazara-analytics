@@ -30,14 +30,13 @@ const mockUseQuery = require('@tanstack/react-query').useQuery;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 describe('useUser', () => {
-  const mockHandleLogOut = jest.fn();
+  const mockHandleLogout = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
 
     mockUseAuthSlice.mockReturnValue({
-      accessToken: 'mock-token-123',
-      handleLogOut: mockHandleLogOut
+      handleLogout: mockHandleLogout
     });
 
     mockAuthService.getUser.mockReturnValue({
@@ -87,29 +86,8 @@ describe('useUser', () => {
       queryKey: ['profile'],
       queryFn: expect.any(Function),
       staleTime: Infinity,
-      retry: 2,
-      enabled: true
+      retry: 2
     });
-  });
-
-  it('disables query when no access token', () => {
-    mockUseAuthSlice.mockReturnValue({
-      accessToken: '',
-      handleLogOut: mockHandleLogOut
-    });
-
-    mockUseQuery.mockReturnValue({
-      data: undefined,
-      isLoading: false
-    });
-
-    renderHook(() => useUser());
-
-    expect(mockUseQuery).toHaveBeenCalledWith(
-      expect.objectContaining({
-        enabled: false
-      })
-    );
   });
 
   it('calls API with correct parameters in getUser function', async () => {
@@ -141,11 +119,12 @@ describe('useUser', () => {
 
     expect(mockApi).toHaveBeenCalledWith({
       method: 'get',
-      url: '/auth/me'
+      url: '/auth/me',
+      withCredentials: true
     });
   });
 
-  it('calls handleLogOut when API request fails', async () => {
+  it('calls handleLogout when API request fails', async () => {
     const mockError = new Error('API Error');
     mockApi.mockRejectedValue(mockError);
 
@@ -163,7 +142,7 @@ describe('useUser', () => {
     renderHook(() => useUser());
 
     await expect(queryFn!()).rejects.toThrow('API Error');
-    expect(mockHandleLogOut).toHaveBeenCalledTimes(1);
+    expect(mockHandleLogout).toHaveBeenCalledTimes(1);
   });
 
   it('returns undefined user when no data', () => {
