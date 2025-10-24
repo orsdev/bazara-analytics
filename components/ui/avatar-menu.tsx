@@ -20,7 +20,13 @@ export function AvatarMenu() {
     <>
       <div className="w-9 h-9">
         <DropdownMenu modal={false}>
-          <DropdownMenuTrigger asChild className="cursor-pointer">
+          <DropdownMenuTrigger
+            asChild
+            className="cursor-pointer"
+            aria-label="Open user menu"
+            aria-expanded="false"
+            aria-haspopup="menu"
+          >
             <div className="flex items-center justify-center w-9 h-9 rounded-full">
               {avatar ? (
                 <Image

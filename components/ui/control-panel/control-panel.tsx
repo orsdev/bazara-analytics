@@ -13,7 +13,10 @@ export const ControlPanel = () => {
       <div className="max-w-xl2 mx-auto flex justify-between items-center h-full gap-2">
         <div className="flex items-center gap-6">
           <PanelSelector />
-          <button className="justify-center items-center flex cursor-pointer">
+          <button
+            className="justify-center items-center flex cursor-pointer"
+            aria-label="Edit"
+          >
             <EditSVGIcon />
           </button>
         </div>

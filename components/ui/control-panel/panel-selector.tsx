@@ -11,7 +11,10 @@ import {
 export const PanelSelector = () => {
   return (
     <Select defaultValue="all">
-      <SelectTrigger className="border-0 h-7! opacity-50 font-medium text-xs">
+      <SelectTrigger
+        className="border-0 h-7! opacity-80 font-medium text-xs"
+        aria-label="Panel Selector"
+      >
         <SelectValue placeholder="Select" />
       </SelectTrigger>
       <SelectContent>

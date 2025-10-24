@@ -17,10 +17,7 @@ export const loginSchema = yup.object({
         return emailRegex.test(value) || usernameRegex.test(value);
       }
     ),
-  password: yup
-    .string()
-    .required('Password is required')
-    .min(8, 'Password must be at least 8 characters')
+  password: yup.string().required('Password is required')
 });
 
 export type LoginFormData = yup.InferType<typeof loginSchema>;

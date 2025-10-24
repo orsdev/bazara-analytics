@@ -34,6 +34,9 @@ export function MobileNavigation() {
           <DropdownMenuTrigger
             asChild
             className="cursor-pointer m-0 p-0 relative top-1"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-haspopup="menu"
           >
             <HamburgerSVGIcon size={28} />
           </DropdownMenuTrigger>
