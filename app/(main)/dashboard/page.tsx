@@ -1,7 +1,9 @@
 import {
   DashboardHeader,
   MetricsGrid,
-  ResolvedTickets
+  ResolvedTickets,
+  PendingTicket,
+  PendingApproval
 } from '@/features/dashboard/components';
 
 export default function DashboardPage() {
@@ -13,7 +15,10 @@ export default function DashboardPage() {
         <div className="">
           <ResolvedTickets />
         </div>
-        <div className="flex flex-col gap-6 border"></div>
+        <div className="flex flex-col gap-6">
+          <PendingTicket />
+          <PendingApproval />
+        </div>
       </div>
     </div>
   );

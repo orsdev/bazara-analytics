@@ -1,3 +1,5 @@
 export * from './dashboard-header';
 export * from './metrics-grid';
 export * from './resolved-tickets';
+export * from './pending-ticket';
+export * from './pending-approval';

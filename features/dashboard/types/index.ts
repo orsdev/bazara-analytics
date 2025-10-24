@@ -26,3 +26,13 @@ export interface ResolvedTicketAgent {
   name: string;
   ticketsResolved: number;
 }
+
+export interface PendingTicket {
+  id: string;
+  count: number;
+}
+
+export interface PendingApproval {
+  id: string;
+  count: number;
+}

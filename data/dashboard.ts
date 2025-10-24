@@ -1,6 +1,8 @@
 import {
   DashboardMetric,
-  ResolvedTicketAgent
+  ResolvedTicketAgent,
+  PendingTicket,
+  PendingApproval
 } from '@/features/dashboard/types';
 
 export const resolvedTicketsData: ResolvedTicketAgent[] = [
@@ -70,4 +72,14 @@ export const dashboardMetrics: DashboardMetric = {
     comparisonRange: 'week',
     chartData: [97, 167, 100, 373, 301, 245, 309]
   }
+};
+
+export const pendingTicketsData: PendingTicket = {
+  id: 'pending-tickets',
+  count: 13
+};
+
+export const pendingApprovalsData: PendingApproval = {
+  id: 'pending-approvals',
+  count: 2
 };

@@ -1,7 +1,12 @@
 'use client';
 
 import { FormField, LoadingButton } from '@/components/ui';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/cards/card';
 import { Input } from '@/components/ui/forms/input';
 import { PasswordInput } from '@/components/ui/forms/password-input';
 import { LoginFormData, loginSchema } from '@/lib/validations';

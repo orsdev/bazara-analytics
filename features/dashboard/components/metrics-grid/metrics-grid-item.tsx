@@ -42,9 +42,9 @@ export const MetricsGridItem = ({
         <div className="flex gap-4 w-full">
           <div className="flex gap-2 items-center justify-between w-full">
             <div className="flex-1">
-              <h1 className="text-lg font-bold text-black">
+              <h3 className="text-lg font-bold text-black">
                 {typeof value === 'number' ? value.toLocaleString() : value}
-              </h1>
+              </h3>
               {change && (
                 <div className="flex items-center gap-1 mb-1">
                   <span
