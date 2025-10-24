@@ -6,3 +6,4 @@ export * from './pending-approval';
 export * from './result-category';
 export * from './response-time';
 export * from './change-request';
+export * from './awaiting-approval-table';

@@ -206,3 +206,182 @@ export const changeRequestData = [
     standard: 110
   }
 ];
+
+export const requestsData = [
+  {
+    title: 'Request for Application Upgrade to Change Management',
+    module: 'Change Management',
+    id: 'CHG-76251',
+    category: 'IT Support',
+    priority: 'Severity 1',
+    createdBy: 'Cynthia Njoku',
+    createdAt: '2025-10-24T21:41:00+01:00',
+    dueDate: '2025-10-24T21:41:00+01:00',
+    status: 'Pending'
+  },
+  {
+    title: 'Two-Factor Authentication Setup Re: Service Request',
+    module: 'Service Request',
+    id: 'SRT-56719',
+    category: 'Security',
+    priority: 'Severity 2',
+    createdBy: 'Bayo Adebayo',
+    createdAt: '2025-11-24T21:41:00+01:00',
+    dueDate: '2025-11-24T21:41:00+01:00',
+    status: 'Approved'
+  },
+  {
+    title: 'Login Failure - Credentials Not Work',
+    module: 'Incident Management',
+    id: 'INC-28238',
+    category: 'IT Support',
+    priority: 'Severity 1',
+    createdBy: 'Chioma Nwosu',
+    createdAt: '2025-12-24T21:41:00+01:00',
+    dueDate: '2025-12-24T21:41:00+01:00',
+    status: 'Declined'
+  },
+  {
+    title: 'Locked Out of System - Need Passw',
+    module: 'Incident Management',
+    id: 'INC-28239',
+    category: 'Security',
+    priority: 'Low',
+    createdBy: 'Chukwuemeka Eze',
+    createdAt: '2026-01-24T21:41:00+01:00',
+    dueDate: '2026-01-24T21:41:00+01:00',
+    status: 'Pending'
+  },
+  {
+    title: 'System Upgrade Request',
+    module: 'Change Management',
+    id: 'CHG-76252',
+    category: 'IT Infrastructure',
+    priority: 'Medium',
+    createdBy: 'Folake Adeyemi',
+    createdAt: '2026-02-24T21:41:00+01:00',
+    dueDate: '2026-02-24T21:41:00+01:00',
+    status: 'Approved'
+  },
+  {
+    title: 'Password Reset Request',
+    module: 'Service Request',
+    id: 'SRT-56720',
+    category: 'Security',
+    priority: 'Severity 2',
+    createdBy: 'Gbenga Ogunleye',
+    createdAt: '2026-03-24T21:41:00+01:00',
+    dueDate: '2026-03-24T21:41:00+01:00',
+    status: 'Declined'
+  },
+  {
+    title: 'Network Issue Report',
+    module: 'Incident Management',
+    id: 'INC-28240',
+    category: 'IT Support',
+    priority: 'Severity 1',
+    createdBy: 'Halima Ibrahim',
+    createdAt: '2026-04-24T21:41:00+01:00',
+    dueDate: '2026-04-24T21:41:00+01:00',
+    status: 'Pending'
+  },
+  {
+    title: 'Security Audit Request',
+    module: 'Change Management',
+    id: 'CHG-76253',
+    category: 'Security',
+    priority: 'Severity 2',
+    createdBy: 'Ibrahim Musa',
+    createdAt: '2026-05-24T21:41:00+01:00',
+    dueDate: '2026-05-24T21:41:00+01:00',
+    status: 'Approved'
+  },
+  {
+    title: 'Access Request',
+    module: 'Service Request',
+    id: 'SRT-56721',
+    category: 'HR',
+    priority: 'Severity 2',
+    createdBy: 'Kemi Adebayo',
+    createdAt: '2026-06-24T21:41:00+01:00',
+    dueDate: '2026-06-24T21:41:00+01:00',
+    status: 'Declined'
+  },
+  {
+    title: 'Server Downtime Report',
+    module: 'Incident Management',
+    id: 'INC-28241',
+    category: 'IT Infrastructure',
+    priority: 'Severity 1',
+    createdBy: 'Lanre Olayinka',
+    createdAt: '2026-07-24T21:41:00+01:00',
+    dueDate: '2026-07-24T21:41:00+01:00',
+    status: 'Pending'
+  },
+  {
+    title: 'Software Patch Request',
+    module: 'Change Management',
+    id: 'CHG-76254',
+    category: 'IT Support',
+    priority: 'Severity 2',
+    createdBy: 'Ngozi Eze',
+    createdAt: '2026-08-24T21:41:00+01:00',
+    dueDate: '2026-08-24T21:41:00+01:00',
+    status: 'Approved'
+  },
+  {
+    title: 'Database Maintenance Request',
+    module: 'Change Management',
+    id: 'CHG-76255',
+    category: 'IT Infrastructure',
+    priority: 'Severity 2',
+    createdBy: 'Adaeze Chukwu',
+    createdAt: '2026-10-24T21:41:00+01:00',
+    dueDate: '2026-10-24T21:41:00+01:00',
+    status: 'Pending'
+  },
+  {
+    title: 'Firewall Configuration Update',
+    module: 'Incident Management',
+    id: 'INC-28243',
+    category: 'Security',
+    priority: 'Severity 2',
+    createdBy: 'Emeka Nnamdi',
+    createdAt: '2026-11-24T21:41:00+01:00',
+    dueDate: '2026-11-24T21:41:00+01:00',
+    status: 'Approved'
+  },
+  {
+    title: 'Email Server Outage',
+    module: 'Incident Management',
+    id: 'INC-28244',
+    category: 'IT Support',
+    priority: 'Severity 2',
+    createdBy: 'Funmi Adeolu',
+    createdAt: '2026-12-24T21:41:00+01:00',
+    dueDate: '2026-12-24T21:41:00+01:00',
+    status: 'Declined'
+  },
+  {
+    title: 'VPN Access Request',
+    module: 'Service Request',
+    id: 'SRT-56722',
+    category: 'Security',
+    priority: 'Severity 2',
+    createdBy: 'Gbadebo Okafor',
+    createdAt: '2027-01-24T21:41:00+01:00',
+    dueDate: '2027-01-24T21:41:00+01:00',
+    status: 'Pending'
+  },
+  {
+    title: 'Backup System Failure',
+    module: 'Incident Management',
+    id: 'INC-28245',
+    category: 'IT Infrastructure',
+    priority: 'Severity 2',
+    createdBy: 'Hauwa Suleiman',
+    createdAt: '2027-02-24T21:41:00+01:00',
+    dueDate: '2027-02-24T21:41:00+01:00',
+    status: 'Approved'
+  }
+];

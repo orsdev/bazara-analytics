@@ -82,3 +82,20 @@ export interface ChangeRequestItem {
 }
 
 export type ChangeRequestData = ChangeRequestItem[];
+
+export enum RequestStatus {
+  PENDING = 'Pending',
+  APPROVED = 'Approved',
+  DECLINED = 'Declined'
+}
+export interface Request {
+  title: string;
+  module: string;
+  id: string;
+  category: string;
+  priority: string;
+  createdBy: string;
+  createdAt: string;
+  dueDate: string;
+  status: RequestStatus;
+}

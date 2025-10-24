@@ -7,3 +7,5 @@ export * from './control-panel';
 export * from './empty-chart-state';
 export * from './cards';
 export * from './skeleton';
+export * from './spinner';
+export * from './modals';
