@@ -69,7 +69,7 @@ export const ChangeRequest = () => {
       headerIcon={<PinchSVGIcon />}
       handleMoreOptions={() => {}}
     >
-      <div className="flex items-center justify-between gap-5 mb-6">
+      <div className="flex items-center justify-between flex-col sm:flex-row gap-5 mb-6">
         <CustomLegend />
         <div
           className={cn('max-w-[8.38rem] w-full flex items-center gap-3', {
@@ -96,7 +96,7 @@ export const ChangeRequest = () => {
         />
       )}
 
-      <div className="h-80">
+      <div className="h-80 overflow-hidden">
         {isLoading && (
           <div className="flex items-center justify-center h-full">
             <div className="text-gray-500">Loading chart data...</div>

@@ -19,13 +19,6 @@ export function useResponseTime() {
     url: dashboardService.getResponseTime().url
   });
 
-  const parseTimeString = (timeString: string): Date => {
-    const [hours, minutes, seconds] = timeString.split(':').map(Number);
-    const date = new Date();
-    date.setHours(hours, minutes, seconds, 0);
-    return date;
-  };
-
   const formatTimeForDisplay = (
     timeString: string
   ): { value: string; unit: string } => {

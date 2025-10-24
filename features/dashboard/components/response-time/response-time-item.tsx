@@ -43,11 +43,11 @@ export const ResponseTimeItem = ({
       <div className="w-full">
         <div className="flex gap-2 items-center justify-between w-full">
           <div className="flex-1">
-            <h2 className="text-[1.75rem] font-bold text-black mb-3">
+            <h2 className="text-[1.2rem] md:text-[1.75rem] font-bold text-black mb-3">
               {value} <span className="opacity-50">{unit}</span>
             </h2>
             {change && (
-              <div className="flex items-center gap-1 mb-1">
+              <div className="flex md:items-center flex-col md:flex-row gap-1 mb-1">
                 <span
                   className={cn(
                     'text-sm font-medium',

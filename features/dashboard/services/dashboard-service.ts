@@ -9,7 +9,9 @@ export const dashboardService = {
     categoryResults: ['dashboard', 'category-results'] as const,
     responseTime: ['dashboard', 'response-time'] as const,
     changeRequests: (filer: Record<string, string>) =>
-      ['dashboard', 'change-requests', buildQueryParams(filer)] as const
+      ['dashboard', 'change-requests', buildQueryParams(filer)] as const,
+    requests: (filter: Record<string, string>) =>
+      ['dashboard', 'requests', buildQueryParams(filter)] as const
   },
   getMetrics: () => ({
     url: '/dashboard/metrics',
@@ -27,6 +29,13 @@ export const dashboardService = {
     url: '/dashboard/pending-approvals',
     method: 'GET'
   }),
+  getRequests: (filter: Record<string, string>) => {
+    const queryParams = buildQueryParams(filter);
+    return {
+      url: `/dashboard/requests${queryParams ? `?${queryParams}` : ''}`,
+      method: 'GET'
+    };
+  },
   getCategoryResults: () => ({
     url: '/dashboard/category-results',
     method: 'GET'
