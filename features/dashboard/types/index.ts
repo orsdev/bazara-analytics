@@ -1,0 +1,23 @@
+export interface DashboardMetricRaw {
+  id: string;
+  currentValue: number;
+  previousValue: number;
+  comparisonRange: string;
+  chartData: number[];
+}
+
+export interface DashboardMetric {
+  [key: string]: DashboardMetricRaw;
+}
+
+export interface TransformedMetric {
+  id: string;
+  title: string;
+  value: number;
+  change: {
+    value: string;
+    label: string;
+    isPositive: boolean;
+  };
+  chartData: number[];
+}
