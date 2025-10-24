@@ -4,7 +4,8 @@ export const dashboardService = {
     resolvedTickets: ['dashboard', 'resolved-tickets'] as const,
     pendingTickets: ['dashboard', 'pending-tickets'] as const,
     pendingApprovals: ['dashboard', 'pending-approvals'] as const,
-    categoryResults: ['dashboard', 'category-results'] as const
+    categoryResults: ['dashboard', 'category-results'] as const,
+    responseTime: ['dashboard', 'response-time'] as const
   },
   getMetrics: () => ({
     url: '/dashboard/metrics',
@@ -24,6 +25,10 @@ export const dashboardService = {
   }),
   getCategoryResults: () => ({
     url: '/dashboard/category-results',
+    method: 'GET'
+  }),
+  getResponseTime: () => ({
+    url: '/dashboard/response-time',
     method: 'GET'
   })
 };

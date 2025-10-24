@@ -6,3 +6,4 @@ export * from './sub-navbar';
 export * from './control-panel';
 export * from './empty-chart-state';
 export * from './cards';
+export * from './skeleton';

@@ -68,15 +68,15 @@ export const ResultCategory = () => {
 
       <hr className="w-full block my-3" />
       <div className="w-full">
-        <div className="relative h-64 w-full">
+        <div className="relative h-[12.06rem] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
                 data={categories}
                 cx="50%"
                 cy="50%"
-                innerRadius={80}
-                outerRadius={95}
+                innerRadius={65}
+                outerRadius={80}
                 paddingAngle={-12}
                 cornerRadius={8}
                 dataKey="value"

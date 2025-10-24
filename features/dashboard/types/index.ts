@@ -48,3 +48,28 @@ export interface CategoryResults {
   currency: string;
   categories: Category[];
 }
+
+export interface ResponseTime {
+  id: string;
+  currentValue: string;
+  previousValue: string;
+  comparisonRange: string;
+  chartData: { value: number }[];
+}
+
+export interface ResponseTimeData {
+  [key: string]: ResponseTime;
+}
+
+export interface TransformedResponseTime {
+  id: string;
+  title: string;
+  value: string;
+  unit: string;
+  change: {
+    value: string;
+    label: string;
+    isPositive: boolean;
+  };
+  chartData: { value: number }[];
+}

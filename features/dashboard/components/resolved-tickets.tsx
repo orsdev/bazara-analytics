@@ -29,7 +29,7 @@ export const ResolvedTickets = () => {
   }
 
   return (
-    <Card className="p-4 rounded-[0.75rem] shadow-[0px_0px_4px_rgba(150,143,143,0.15)]">
+    <Card className="p-4 rounded-[0.75rem] shadow-[0px_0px_4px_rgba(150,143,143,0.15)] gap-0">
       <div className="flex gap-6 items-center justify-between">
         <div className="flex gap-2 items-center justify-between w-full">
           <div className="flex gap-2.5 items-center">
@@ -54,7 +54,7 @@ export const ResolvedTickets = () => {
         </div>
       </div>
 
-      <div className="border w-full h-px my-4" />
+      <hr className="block w-full my-4" />
 
       {!hasAgents && (
         <EmptyChartState
@@ -65,7 +65,7 @@ export const ResolvedTickets = () => {
       )}
 
       {hasAgents && (
-        <div className="h-89 w-full">
+        <div className="h-97.5 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart layout="vertical" data={agents}>
               <XAxis
