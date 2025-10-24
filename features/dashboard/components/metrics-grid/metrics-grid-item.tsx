@@ -94,7 +94,7 @@ export const MetricsGridItem = ({
                       stroke="none"
                     />
 
-                    {/*  Main line now always visible */}
+                    {/*  Main line */}
                     <Line
                       type="monotone"
                       dataKey="value"

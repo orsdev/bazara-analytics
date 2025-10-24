@@ -21,3 +21,8 @@ export interface TransformedMetric {
   };
   chartData: number[];
 }
+export interface ResolvedTicketAgent {
+  id: string;
+  name: string;
+  ticketsResolved: number;
+}
