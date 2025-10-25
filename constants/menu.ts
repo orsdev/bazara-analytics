@@ -1,8 +1,8 @@
 export const menuItems = [
   { label: 'Home', href: '/dashboard' },
-  { label: 'Workbench', href: '/workbench' },
-  { label: 'Tickets', href: '/tickets' },
-  { label: 'Service Catalogue', href: '/catalogue' },
-  { label: 'Knowledge Management', href: '/knowledge' },
-  { label: 'Admin Settings', href: '/settings' }
+  { label: 'Workbench', href: '#' },
+  { label: 'Tickets', href: '#' },
+  { label: 'Service Catalogue', href: '#' },
+  { label: 'Knowledge Management', href: '#' },
+  { label: 'Admin Settings', href: '#' }
 ];
