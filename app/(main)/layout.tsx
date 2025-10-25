@@ -1,4 +1,9 @@
-import { Navbar, SubNavbar, ControlPanel } from '@/components/ui';
+import {
+  Navbar,
+  SubNavbar,
+  ControlPanel,
+  FooterSupport
+} from '@/components/ui';
 import { AuthProvider } from '@/providers';
 import { ChildrenProps } from '@/types';
 
@@ -15,6 +20,7 @@ export default async function MainLayout({ children }: ChildrenProps) {
         </div>
         <div className="p-6 relative z-3">{children}</div>
       </main>
+      <FooterSupport />
     </AuthProvider>
   );
 }

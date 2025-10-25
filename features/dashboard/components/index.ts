@@ -1,12 +1,20 @@
-export * from './dashboard-header';
-export * from './metrics-grid';
-export * from './resolved-tickets';
-export * from './pending-ticket';
-export * from './pending-approval';
-export * from './category-pie-chart';
-export * from './response-time';
-export * from './change-request-line-chart';
-export * from './awaiting-approval-table';
-export * from './tickets-table';
-export * from './ticket-resolution-bar-chart';
-export * from './team-tickets-table';
+export { DashboardHeader } from './dashboard-header';
+export { MetricsGrid } from './metrics-grid';
+export {
+  ChangeRequestBarChart,
+  ChangeRequestLineChart,
+  CategoryPieChart,
+  ResolutionBarChart,
+  TeamTicketsBarChart
+} from './charts';
+export {
+  PendingRequestsTable,
+  IncidentTicketsTable,
+  RequestTicketsTable
+} from './tables';
+export {
+  PendingApprovalCard,
+  PendingTicketCard,
+  ResponseTimeCards,
+  MetricsCards
+} from './cards';
