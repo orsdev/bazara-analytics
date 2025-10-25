@@ -38,13 +38,8 @@ export default function DashboardPage() {
         <TicketResolutionBarChart />
 
         <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <ChangeRequestBarChart />
-          </div>
-
-          <div>
-            <TeamTicketsTable />
-          </div>
+          <ChangeRequestBarChart />
+          <TeamTicketsTable />
         </div>
       </div>
     </div>
