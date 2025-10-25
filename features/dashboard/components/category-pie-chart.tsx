@@ -5,8 +5,14 @@ import { formatCurrency } from '@/utils';
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 import { useCategoryResults } from '../hooks/use-category-results';
 import { CategoryResults } from '../types';
+import { cn } from '@/lib';
 
-const colors = ['#FFC300', '#00C033', '#9A00C0', '#C0006A'];
+const colors = [
+  'var(--chart-9)',
+  'var(--chart-7)',
+  'var(--chart-5)',
+  'var(--chart-12)'
+];
 
 const CustomLegend = ({
   categories
@@ -17,8 +23,8 @@ const CustomLegend = ({
     {categories.map((entry, index) => (
       <div key={entry.id} className="flex items-center gap-2">
         <div
-          className="w-3 h-3 rounded-full"
-          style={{ backgroundColor: colors[index] }}
+          className={cn('w-3 h-3 rounded-full')}
+          style={{ backgroundColor: colors[index % colors.length] }}
         />
         <span className="text-sm text-foreground opacity-80">{entry.name}</span>
       </div>
@@ -26,7 +32,7 @@ const CustomLegend = ({
   </div>
 );
 
-export const CategoryChart = () => {
+export const CategoryPieChart = () => {
   const { currency, categories, isLoading } = useCategoryResults();
 
   const totalValue = categories.reduce((sum, item) => sum + item.value, 0);

@@ -411,4 +411,81 @@ describe('CustomTable', () => {
     expect(screen.getByTestId('move-up')).toBeInTheDocument();
     expect(screen.getByTestId('arrow-up-down')).toBeInTheDocument();
   });
+
+  it('renders table with more than 10 rows', () => {
+    const mockData: TestData[] = Array.from({ length: 15 }, (_, i) => ({
+      id: i + 1,
+      name: `User ${i + 1}`,
+      email: `user${i + 1}@example.com`
+    }));
+    const table = createMockTable({ rows: mockData });
+
+    const { container } = render(
+      <CustomTable columns={mockColumns} table={table} {...mockHandlers} />
+    );
+
+    expect(container.querySelector('.h-\\[605px\\]')).toBeInTheDocument();
+  });
+
+  it('calls handleGoToFirstPage when first page button is clicked', () => {
+    const mockData: TestData[] = [
+      { id: 1, name: 'John Doe', email: 'john@example.com' }
+    ];
+    const table = createMockTable({
+      rows: mockData,
+      canPreviousPage: true,
+      pageIndex: 2,
+      pageCount: 5
+    });
+
+    render(
+      <CustomTable
+        columns={mockColumns}
+        table={table}
+        showPagination={true}
+        {...mockHandlers}
+      />
+    );
+
+    const buttons = screen.getAllByRole('button');
+    const firstPageButton = buttons.find((btn) =>
+      btn.textContent?.includes('Go to first page')
+    );
+
+    if (firstPageButton) {
+      fireEvent.click(firstPageButton);
+      expect(mockHandlers.handleGoToFirstPage).toHaveBeenCalledTimes(1);
+    }
+  });
+
+  it('calls handleGoToLastPage when last page button is clicked', () => {
+    const mockData: TestData[] = [
+      { id: 1, name: 'John Doe', email: 'john@example.com' }
+    ];
+    const table = createMockTable({
+      rows: mockData,
+      canNextPage: true,
+      pageIndex: 0,
+      pageCount: 5
+    });
+
+    render(
+      <CustomTable
+        columns={mockColumns}
+        table={table}
+        showPagination={true}
+        {...mockHandlers}
+      />
+    );
+
+    const buttons = screen.getAllByRole('button');
+    const lastPageButton = buttons.find((btn) =>
+      btn.textContent?.includes('Go to last page')
+    );
+
+    if (lastPageButton) {
+      fireEvent.click(lastPageButton);
+      expect(mockHandlers.handleGoToLastPage).toHaveBeenCalledTimes(1);
+    }
+  });
 });

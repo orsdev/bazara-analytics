@@ -129,4 +129,18 @@ describe('ClientErrorBoundary', () => {
 
     consoleSpy.mockRestore();
   });
+
+  it('renders error fallback UI with all elements', () => {
+    render(
+      <ClientErrorBoundary>
+        <ThrowError shouldThrow={true} />
+      </ClientErrorBoundary>
+    );
+
+    // Check all UI elements are present
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /try again/i })
+    ).toBeInTheDocument();
+  });
 });

@@ -35,10 +35,10 @@ const PendingApproval = dynamic(
   { loading: () => <Skeleton className="h-48 w-full" /> }
 );
 
-const CategoryChart = dynamic(
+const CategoryPieChart = dynamic(
   () =>
     import('@/features/dashboard/components').then((mod) => ({
-      default: mod.CategoryChart
+      default: mod.CategoryPieChart
     })),
   { loading: () => <Skeleton className="h-64 w-full" /> }
 );
@@ -123,7 +123,7 @@ export default function DashboardPage() {
         <div className="flex flex-col gap-6">
           <PendingTicket />
           <PendingApproval />
-          <CategoryChart />
+          <CategoryPieChart />
         </div>
       </div>
 
