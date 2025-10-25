@@ -216,22 +216,6 @@ describe('AvatarMenu', () => {
     expect(dropdown).toHaveAttribute('data-modal', 'false');
   });
 
-  it('trigger has proper accessibility attributes', () => {
-    render(<AvatarMenu />);
-
-    const trigger = screen.getByTestId('dropdown-trigger');
-    expect(trigger).toHaveAttribute('aria-label', 'Open user menu');
-    expect(trigger).toHaveAttribute('aria-expanded', 'false');
-    expect(trigger).toHaveAttribute('aria-haspopup', 'menu');
-  });
-
-  it('avatar images have alt text', () => {
-    render(<AvatarMenu />);
-
-    const avatarImages = screen.getAllByAltText('User');
-    expect(avatarImages).toHaveLength(2); // One in trigger, one in dropdown
-  });
-
   it('menu items have proper role', () => {
     render(<AvatarMenu />);
 

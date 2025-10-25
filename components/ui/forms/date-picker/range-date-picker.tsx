@@ -19,6 +19,7 @@ interface RangeDatePickerProps {
   endDate: Date | null;
   minDate?: Date;
   maxDate?: Date;
+  label?: string;
   placeholder?: string;
   handleChange: ({ from, to }: { from: Date | null; to: Date | null }) => void;
 }
@@ -33,14 +34,18 @@ export const RangeDatePicker = ({
   isDisabled = false,
   showTimeSelect = false,
   className,
+  label,
   placeholder
 }: RangeDatePickerProps) => {
+  const inputId = `${name}-date-picker`;
+
   return (
     <div className="flex flex-col justify-center items-center gap-2 w-full relative cursor-pointer">
-      <label htmlFor={name} className="sr-only">
-        {placeholder}
+      <label htmlFor={inputId} className="sr-only">
+        {label || 'Select date range'}
       </label>
       <ReactDatePicker
+        id={inputId}
         name={name}
         onChange={(dates) => {
           const [from, to] = dates;
@@ -62,8 +67,9 @@ export const RangeDatePicker = ({
           className
         )}
         placeholderText={placeholder}
+        aria-label={label || 'Select date range'}
       />
-      <div className="absolute right-2 z-10">
+      <div className="absolute right-2 z-10 pointer-events-none">
         <CalendarDaysSVGIcon />
       </div>
     </div>

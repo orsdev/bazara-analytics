@@ -38,12 +38,13 @@ export const SearchInput = ({
         <div className="absolute right-2">
           <button
             type="button"
-            className="flex items-center gap-2 justify-center text-xs"
+            aria-label="Keyboard shortcut Command K"
+            className="flex items-center gap-2 justify-center text-xs min-h-12 min-w-12 p-2"
           >
-            <span className="flex items-center justify-center rounded-[2.67px] bg-background  w-4 h-4 opacity-50">
+            <span className="flex items-center justify-center rounded-[2.67px] bg-background w-4 h-4 opacity-50">
               ⌘
             </span>
-            <span className="flex items-center justify-center rounded-[2.67px] bg-background  w-4 h-4 opacity-50">
+            <span className="flex items-center justify-center rounded-[2.67px] bg-background w-4 h-4 opacity-50">
               K
             </span>
           </button>

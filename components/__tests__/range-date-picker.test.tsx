@@ -68,6 +68,7 @@ describe('RangeDatePicker', () => {
     name: 'date-range',
     startDate: null,
     endDate: null,
+    label: 'Select date range',
     handleChange: mockHandleChange
   };
 
@@ -199,14 +200,6 @@ describe('RangeDatePicker', () => {
     const label = container.querySelector('label.sr-only');
     expect(label).toBeInTheDocument();
     expect(label).toHaveTextContent('Select date range');
-  });
-
-  it('renders label with correct htmlFor attribute', () => {
-    const { container } = render(
-      <RangeDatePicker {...defaultProps} name="test-date" placeholder="Test" />
-    );
-    const label = container.querySelector('label[for="test-date"]');
-    expect(label).toBeInTheDocument();
   });
 
   it('handles onChange callback correctly', () => {
