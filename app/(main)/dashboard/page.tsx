@@ -13,6 +13,13 @@ import {
 } from '@/features/dashboard/components';
 import { ResponseTime } from '@/features/dashboard/components';
 import { ChangeRequestBarChart } from '@/features/dashboard/components/change-request-bar-chart';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Dashboard | Bazara Technologies',
+  description:
+    "Empowering Digital Transformation through Advanced Platforms, AI, and Hybrid Cloud and transform your business with Bazara's cutting-edge solutions"
+};
 
 export default function DashboardPage() {
   return (
@@ -36,7 +43,6 @@ export default function DashboardPage() {
         <AwaitingApprovalTable />
         <TicketsTable />
         <TicketResolutionBarChart />
-
         <div className="grid md:grid-cols-2 gap-6">
           <ChangeRequestBarChart />
           <TeamTicketsTable />
