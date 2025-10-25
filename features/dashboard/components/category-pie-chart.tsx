@@ -26,7 +26,7 @@ const CustomLegend = ({
   </div>
 );
 
-export const ResultCategory = () => {
+export const CategoryChart = () => {
   const { currency, categories, isLoading } = useCategoryResults();
 
   const totalValue = categories.reduce((sum, item) => sum + item.value, 0);

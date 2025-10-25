@@ -4,10 +4,10 @@ import { ConfirmationModal, DefaultCard, PinchSVGIcon } from '@/components/ui';
 import { useTable, useTablePagination } from '@/hooks';
 import { CustomTable } from '@/components/ui/table';
 import { ColumnDef } from '@tanstack/react-table';
-import { useRequests } from '../hooks/use-approval-requests';
+import { useRequests } from '../hooks/use-requests';
 import { cn } from '@/lib';
 import { dateFormatter } from '@/utils';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -33,138 +33,141 @@ export const AwaitingApprovalTable = () => {
     status: RequestStatus.PENDING
   });
 
-  const columns: ColumnDef<Request>[] = [
-    {
-      accessorKey: 'title',
-      header: 'Title',
-      cell: ({ row }) => (
-        <span className="w-[220px] wrap-break-word whitespace-pre-wrap line-clamp-1">
-          {row.getValue('title')}
-        </span>
-      )
-    },
-    {
-      accessorKey: 'module',
-      header: 'Module',
-      cell: ({ row }) => <span>{row.getValue('module')}</span>
-    },
-    {
-      accessorKey: 'id',
-      header: 'ID',
-      cell: ({ row }) => <span>{row.getValue('id')}</span>
-    },
-    {
-      accessorKey: 'createdBy',
-      header: 'Created By',
-      cell: ({ row }) => <span>{row.getValue('createdBy')}</span>
-    },
-    {
-      accessorKey: 'createdAt',
-      header: 'Created On',
-      cell: ({ row }) => {
-        const date = row.getValue('createdAt') as string;
-        const formattedDate = date ? dateFormatter(date) : 'N/A';
-        return <span>{formattedDate}</span>;
-      }
-    },
-    {
-      accessorKey: 'dueDate',
-      header: 'Due Date',
-      cell: ({ row }) => {
-        const date = row.getValue('dueDate') as string;
-        const formattedDate = date ? dateFormatter(date) : 'N/A';
-        return <span>{formattedDate}</span>;
-      }
-    },
-    {
-      accessorKey: 'status',
-      header: 'Status',
-      cell: ({ row }) => {
-        const status = row.getValue('status') as string;
-        const lowerCaseStatus = status.toLowerCase();
-
-        const isPending =
-          lowerCaseStatus === RequestStatus.PENDING.toLowerCase();
-        const isApproved =
-          lowerCaseStatus === RequestStatus.APPROVED.toLowerCase();
-        const isRejected =
-          lowerCaseStatus === RequestStatus.DECLINED.toLowerCase();
-
-        return (
-          <span
-            className={cn(
-              'px-2 h-5.5 flex items-center justify-center text-xs font-medium rounded-[4px] w-[70px]',
-              {
-                'bg-green-100 text-green-800': isApproved,
-                'bg-red-100 text-red-800': isRejected,
-                'bg-yellow-100 text-yellow-800': isPending
-              }
-            )}
-          >
-            {status}
+  const columns: ColumnDef<Request>[] = useMemo(
+    () => [
+      {
+        accessorKey: 'title',
+        header: 'Title',
+        cell: ({ row }) => (
+          <span className="w-[220px] wrap-break-word whitespace-pre-wrap line-clamp-1">
+            {row.getValue('title')}
           </span>
-        );
-      }
-    },
-    {
-      id: 'actions',
-      enableHiding: false,
-      cell: ({ row }) => {
-        const data = row.original;
-        const lowerCaseStatus = data.status.toLowerCase();
-        const isPending =
-          lowerCaseStatus === RequestStatus.PENDING.toLowerCase();
+        )
+      },
+      {
+        accessorKey: 'module',
+        header: 'Module',
+        cell: ({ row }) => <span>{row.getValue('module')}</span>
+      },
+      {
+        accessorKey: 'id',
+        header: 'ID',
+        cell: ({ row }) => <span>{row.getValue('id')}</span>
+      },
+      {
+        accessorKey: 'createdBy',
+        header: 'Created By',
+        cell: ({ row }) => <span>{row.getValue('createdBy')}</span>
+      },
+      {
+        accessorKey: 'createdAt',
+        header: 'Created On',
+        cell: ({ row }) => {
+          const date = row.getValue('createdAt') as string;
+          const formattedDate = date ? dateFormatter(date) : 'N/A';
+          return <span>{formattedDate}</span>;
+        }
+      },
+      {
+        accessorKey: 'dueDate',
+        header: 'Due Date',
+        cell: ({ row }) => {
+          const date = row.getValue('dueDate') as string;
+          const formattedDate = date ? dateFormatter(date) : 'N/A';
+          return <span>{formattedDate}</span>;
+        }
+      },
+      {
+        accessorKey: 'status',
+        header: 'Status',
+        cell: ({ row }) => {
+          const status = row.getValue('status') as string;
+          const lowerCaseStatus = status.toLowerCase();
 
-        return (
-          <DropdownMenu modal={false}>
-            <DropdownMenuTrigger asChild>
-              <button className="h-8 w-8 p-0 cursor-pointer">
-                <span className="sr-only">Open menu</span>
-                <MoreVertical className="w-5 h-5 opacity-70" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem
-                onClick={() => {
-                  setModalType(ModalType.view);
-                }}
-                className="cursor-pointer text-xs over:bg-primary/5!"
-              >
-                View
-              </DropdownMenuItem>
+          const isPending =
+            lowerCaseStatus === RequestStatus.PENDING.toLowerCase();
+          const isApproved =
+            lowerCaseStatus === RequestStatus.APPROVED.toLowerCase();
+          const isRejected =
+            lowerCaseStatus === RequestStatus.DECLINED.toLowerCase();
 
-              {isPending && (
-                <>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    className="cursor-pointer text-xs over:bg-primary/5!"
-                    onClick={() => {
-                      setModalType(ModalType.approve);
-                    }}
-                  >
-                    Approve
-                  </DropdownMenuItem>
-                </>
+          return (
+            <span
+              className={cn(
+                'px-2 h-5.5 flex items-center justify-center text-xs font-medium rounded-[4px] w-[70px]',
+                {
+                  'bg-green-100 text-green-800': isApproved,
+                  'bg-red-100 text-red-800': isRejected,
+                  'bg-yellow-100 text-yellow-800': isPending
+                }
               )}
-              {isPending && (
-                <>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    className="cursor-pointer text-xs over:bg-primary/5!"
-                    onClick={() => {
-                      setModalType(ModalType.decline);
-                    }}
-                  >
-                    Decline
-                  </DropdownMenuItem>
-                </>
-              )}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        );
+            >
+              {status}
+            </span>
+          );
+        }
+      },
+      {
+        id: 'actions',
+        enableHiding: false,
+        cell: ({ row }) => {
+          const data = row.original;
+          const lowerCaseStatus = data.status.toLowerCase();
+          const isPending =
+            lowerCaseStatus === RequestStatus.PENDING.toLowerCase();
+
+          return (
+            <DropdownMenu modal={false}>
+              <DropdownMenuTrigger asChild>
+                <button className="h-8 w-8 p-0 cursor-pointer">
+                  <span className="sr-only">Open menu</span>
+                  <MoreVertical className="w-5 h-5 opacity-70" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem
+                  onClick={() => {
+                    setModalType(ModalType.view);
+                  }}
+                  className="cursor-pointer text-xs over:bg-primary/5!"
+                >
+                  View
+                </DropdownMenuItem>
+
+                {isPending && (
+                  <>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem
+                      className="cursor-pointer text-xs over:bg-primary/5!"
+                      onClick={() => {
+                        setModalType(ModalType.approve);
+                      }}
+                    >
+                      Approve
+                    </DropdownMenuItem>
+                  </>
+                )}
+                {isPending && (
+                  <>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem
+                      className="cursor-pointer text-xs over:bg-primary/5!"
+                      onClick={() => {
+                        setModalType(ModalType.decline);
+                      }}
+                    >
+                      Decline
+                    </DropdownMenuItem>
+                  </>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          );
+        }
       }
-    }
-  ];
+    ],
+    []
+  );
 
   const { table } = useTable({
     columns,

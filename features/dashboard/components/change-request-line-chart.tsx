@@ -49,7 +49,7 @@ const CustomLegend = () => {
   );
 };
 
-export const ChangeRequest = () => {
+export const ChangeRequestLineChart = () => {
   const {
     selectedStartDate,
     selectedEndDate,

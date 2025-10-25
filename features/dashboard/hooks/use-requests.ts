@@ -3,6 +3,7 @@
 import { useCustomQuery } from '@/hooks';
 import { dashboardService } from '../services/dashboard-service';
 import { Request } from '../types';
+import { EMPTY_ARRAY } from '@/constants';
 
 export function useRequests(filter: Record<string, string>) {
   const {
@@ -15,7 +16,7 @@ export function useRequests(filter: Record<string, string>) {
     url: dashboardService.getRequests(filter).url
   });
 
-  const requests = responseData || [];
+  const requests = responseData || EMPTY_ARRAY;
   const hasData = requests.length > 0;
 
   return {

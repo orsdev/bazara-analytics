@@ -24,6 +24,7 @@ import {
 } from './table';
 import { Skeleton } from '../skeleton';
 import { Spinner } from '../spinner';
+import { NoDataSVGIcon } from '../icons';
 
 interface CustomTableProps<TData> {
   columns: ColumnDef<TData, unknown>[];
@@ -57,7 +58,7 @@ export function CustomTable<TData>({
 
   const renderSkeletonRows = () => (
     <>
-      {Array.from(new Array(8).fill(123456)).map((_, index) => {
+      {Array.from(new Array(4).fill(123456)).map((_, index) => {
         const key = `skeleton-row-${index}`;
         return (
           <TableRow key={key} className="relative z-0">
@@ -73,6 +74,7 @@ export function CustomTable<TData>({
   );
 
   const hasData = table.getRowModel().rows?.length > 0;
+  const displayPagination = showPagination && hasData && !isLoading;
 
   return (
     <>
@@ -192,9 +194,17 @@ export function CustomTable<TData>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  className="h-65 text-center"
                 >
-                  No results.
+                  <span className="flex flex-col items-center justify-center">
+                    <span className="mb-6 flex">
+                      <NoDataSVGIcon />
+                    </span>
+                    <span className="font-bold">No items found</span>
+                    <span className="text-xs mt-2 opacity-70">
+                      Request found will be displayed here
+                    </span>
+                  </span>
                 </TableCell>
               </TableRow>
             )}
@@ -202,8 +212,10 @@ export function CustomTable<TData>({
         </Table>
       </div>
 
-      {showPagination && !isLoading && (
-        <div className={cn('flex items-center justify-end px-4 py-[20px]')}>
+      {displayPagination && (
+        <div
+          className={cn('flex items-center justify-end px-4 py-[10px] border')}
+        >
           <div className="flex w-full items-center gap-8 lg:w-fit">
             <div className="flex w-fit items-center justify-center text-sm font-medium">
               Page {table.getState().pagination.pageIndex + 1} of{' '}

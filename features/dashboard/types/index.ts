@@ -99,3 +99,18 @@ export interface Request {
   dueDate: string;
   status: RequestStatus;
 }
+
+export interface TicketResolutionItem {
+  month: string;
+  closed: number;
+  open: number;
+}
+
+export type TicketResolutionData = TicketResolutionItem[];
+
+export interface ChangeRequestStatusItem {
+  name: string;
+  value: number;
+}
+
+export type ChangeRequestStatusData = ChangeRequestStatusItem[];
