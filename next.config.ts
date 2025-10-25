@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   env: {
     BASE_URL: process.env.BASE_URL
   },
-
   images: {
     remotePatterns: [
       {

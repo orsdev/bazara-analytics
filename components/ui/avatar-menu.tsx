@@ -20,18 +20,16 @@ export function AvatarMenu() {
     <>
       <div className="w-9 h-9">
         <DropdownMenu modal={false}>
-          <DropdownMenuTrigger
-            asChild
-            className="cursor-pointer"
-            aria-label="Open user menu"
-            aria-expanded="false"
-            aria-haspopup="menu"
-          >
-            <div className="flex items-center justify-center w-9 h-9 rounded-full">
+          <DropdownMenuTrigger asChild className="cursor-pointer">
+            <button
+              type="button"
+              aria-label="Open user menu"
+              className="flex items-center justify-center w-9 h-9 rounded-full border-0 bg-transparent p-0"
+            >
               {avatar ? (
                 <Image
                   src={avatar}
-                  alt="User"
+                  alt="User avatar"
                   width={36}
                   height={36}
                   className="object-contain rounded-full h-full w-full"
@@ -41,7 +39,7 @@ export function AvatarMenu() {
                   <AvatarSVGIcon />
                 </div>
               )}
-            </div>
+            </button>
           </DropdownMenuTrigger>
 
           <DropdownMenuContent

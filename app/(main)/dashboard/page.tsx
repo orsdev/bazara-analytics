@@ -18,22 +18,9 @@ import {
 import { Skeleton } from '@/components/ui';
 
 export const metadata: Metadata = {
-  title: 'Dashboard',
+  title: 'Dashboard | Bazara Technologies',
   description:
-    'Analytics dashboard for monitoring tickets, requests, and team performance. View real-time metrics, resolved tickets, pending approvals, and team performance data.',
-  keywords: [
-    'dashboard',
-    'analytics',
-    'tickets',
-    'metrics',
-    'team performance',
-    'data visualization'
-  ],
-  openGraph: {
-    title: 'Dashboard | Bazara Technologies',
-    description:
-      'Analytics dashboard for monitoring tickets and team performance'
-  }
+    'Analytics dashboard for monitoring tickets, requests, and team performance. View real-time metrics, resolved tickets, pending approvals, and team performance data.'
 };
 
 export default function DashboardPage() {
