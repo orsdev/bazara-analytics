@@ -30,14 +30,12 @@ jest.mock('@/utils', () => ({
   errorHandler: jest.fn()
 }));
 
-/* eslint-disable @typescript-eslint/no-require-imports */
 const mockUseCustomMutation = require('@/hooks/use-mutation').useCustomMutation;
 const mockUseRouter = require('nextjs-toploader/app').useRouter;
 const mockToast = require('react-hot-toast').toast;
 const mockAuthService = require('../../services/auth-service').authService;
 const mockUseAuthSlice = require('../../slice/auth-slice').useAuthSlice;
 const mockErrorHandler = require('@/utils').errorHandler;
-/* eslint-enable @typescript-eslint/no-require-imports */
 
 describe('useAuth', () => {
   const mockMutate = jest.fn();
