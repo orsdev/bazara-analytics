@@ -1,10 +1,8 @@
 import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import { DashboardHeader, MetricsGrid } from '@/features/dashboard/components';
-import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui';
 
-// Lazy load components with dynamic imports (SSR enabled for Server Components)
 const ResolvedTickets = dynamic(
   () =>
     import('@/features/dashboard/components').then((mod) => ({
@@ -119,46 +117,24 @@ export default function DashboardPage() {
       <MetricsGrid />
       <div className="grid lg:grid-cols-[1fr_27rem] gap-6">
         <div className="flex gap-6 flex-col">
-          <Suspense fallback={<Skeleton className="h-64 w-full" />}>
-            <ResolvedTickets />
-          </Suspense>
-          <Suspense fallback={<Skeleton className="h-64 w-full" />}>
-            <ResponseTime />
-          </Suspense>
+          <ResolvedTickets />
+          <ResponseTime />
         </div>
         <div className="flex flex-col gap-6">
-          <Suspense fallback={<Skeleton className="h-48 w-full" />}>
-            <PendingTicket />
-          </Suspense>
-          <Suspense fallback={<Skeleton className="h-48 w-full" />}>
-            <PendingApproval />
-          </Suspense>
-          <Suspense fallback={<Skeleton className="h-64 w-full" />}>
-            <CategoryChart />
-          </Suspense>
+          <PendingTicket />
+          <PendingApproval />
+          <CategoryChart />
         </div>
       </div>
 
       <div className="mt-6 flex flex-col gap-6">
-        <Suspense fallback={<Skeleton className="h-80 w-full" />}>
-          <ChangeRequestLineChart />
-        </Suspense>
-        <Suspense fallback={<Skeleton className="h-96 w-full" />}>
-          <AwaitingApprovalTable />
-        </Suspense>
-        <Suspense fallback={<Skeleton className="h-96 w-full" />}>
-          <TicketsTable />
-        </Suspense>
-        <Suspense fallback={<Skeleton className="h-80 w-full" />}>
-          <TicketResolutionBarChart />
-        </Suspense>
+        <ChangeRequestLineChart />
+        <AwaitingApprovalTable />
+        <TicketsTable />
+        <TicketResolutionBarChart />
         <div className="grid md:grid-cols-2 gap-6">
-          <Suspense fallback={<Skeleton className="h-80 w-full" />}>
-            <ChangeRequestBarChart />
-          </Suspense>
-          <Suspense fallback={<Skeleton className="h-80 w-full" />}>
-            <TeamTicketsTable />
-          </Suspense>
+          <ChangeRequestBarChart />
+          <TeamTicketsTable />
         </div>
       </div>
     </div>
