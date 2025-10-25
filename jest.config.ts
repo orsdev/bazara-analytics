@@ -9,7 +9,8 @@ module.exports = {
     '!**/node_modules/**',
     '!**/__tests__/**',
     '!**/__mocks__/**',
-    '!**/index.ts'
+    '!**/index.ts',
+    '!**/icons.tsx'
   ],
   moduleNameMapper: {
     // Handle CSS imports (with CSS modules)
