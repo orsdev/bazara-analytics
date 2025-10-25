@@ -1,44 +1,71 @@
 import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
-import { DashboardHeader, MetricsGrid } from '@/features/dashboard/components';
+import { DashboardHeader, MetricsCards } from '@/features/dashboard/components';
 import { Skeleton } from '@/components/ui';
 
-const ResolvedTickets = dynamic(
+// Tables
+const PendingRequestsTable = dynamic(
   () =>
     import('@/features/dashboard/components').then((mod) => ({
-      default: mod.ResolvedTickets
+      default: mod.PendingRequestsTable
+    })),
+  { loading: () => <Skeleton className="h-96 w-full" /> }
+);
+
+const RequestTicketsTable = dynamic(
+  () =>
+    import('@/features/dashboard/components').then((mod) => ({
+      default: mod.RequestTicketsTable
+    })),
+  { loading: () => <Skeleton className="h-96 w-full" /> }
+);
+
+const IncidentTicketsTable = dynamic(
+  () =>
+    import('@/features/dashboard/components').then((mod) => ({
+      default: mod.IncidentTicketsTable
+    })),
+  { loading: () => <Skeleton className="h-80 w-full" /> }
+);
+
+// Cards
+const ResponseTimeCards = dynamic(
+  () =>
+    import('@/features/dashboard/components').then((mod) => ({
+      default: mod.ResponseTimeCards
     })),
   { loading: () => <Skeleton className="h-64 w-full" /> }
 );
 
-const ResponseTime = dynamic(
+const PendingTicketCard = dynamic(
   () =>
     import('@/features/dashboard/components').then((mod) => ({
-      default: mod.ResponseTime
+      default: mod.PendingTicketCard
+    })),
+  { loading: () => <Skeleton className="h-48 w-full" /> }
+);
+
+const PendingApprovalCard = dynamic(
+  () =>
+    import('@/features/dashboard/components').then((mod) => ({
+      default: mod.PendingApprovalCard
+    })),
+  { loading: () => <Skeleton className="h-48 w-full" /> }
+);
+
+// Charts
+const TeamTicketsBarChart = dynamic(
+  () =>
+    import('@/features/dashboard/components').then((mod) => ({
+      default: mod.TeamTicketsBarChart
     })),
   { loading: () => <Skeleton className="h-64 w-full" /> }
 );
 
-const PendingTicket = dynamic(
+const CategoryPieChart = dynamic(
   () =>
     import('@/features/dashboard/components').then((mod) => ({
-      default: mod.PendingTicket
-    })),
-  { loading: () => <Skeleton className="h-48 w-full" /> }
-);
-
-const PendingApproval = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.PendingApproval
-    })),
-  { loading: () => <Skeleton className="h-48 w-full" /> }
-);
-
-const CategoryChart = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.CategoryChart
+      default: mod.CategoryPieChart
     })),
   { loading: () => <Skeleton className="h-64 w-full" /> }
 );
@@ -51,42 +78,18 @@ const ChangeRequestLineChart = dynamic(
   { loading: () => <Skeleton className="h-80 w-full" /> }
 );
 
-const AwaitingApprovalTable = dynamic(
+const ResolutionBarChart = dynamic(
   () =>
     import('@/features/dashboard/components').then((mod) => ({
-      default: mod.AwaitingApprovalTable
-    })),
-  { loading: () => <Skeleton className="h-96 w-full" /> }
-);
-
-const TicketsTable = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.TicketsTable
-    })),
-  { loading: () => <Skeleton className="h-96 w-full" /> }
-);
-
-const TicketResolutionBarChart = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.TicketResolutionBarChart
+      default: mod.ResolutionBarChart
     })),
   { loading: () => <Skeleton className="h-80 w-full" /> }
 );
 
 const ChangeRequestBarChart = dynamic(
   () =>
-    import('@/features/dashboard/components/change-request-bar-chart').then(
-      (mod) => ({ default: mod.ChangeRequestBarChart })
-    ),
-  { loading: () => <Skeleton className="h-80 w-full" /> }
-);
-
-const TeamTicketsTable = dynamic(
-  () =>
     import('@/features/dashboard/components').then((mod) => ({
-      default: mod.TeamTicketsTable
+      default: mod.ChangeRequestBarChart
     })),
   { loading: () => <Skeleton className="h-80 w-full" /> }
 );
@@ -114,27 +117,27 @@ export default function DashboardPage() {
   return (
     <div className="bg-background rounded-[0.5rem] py-7 px-3 sm:px-6 max-w-xl2 mx-auto">
       <DashboardHeader />
-      <MetricsGrid />
+      <MetricsCards />
       <div className="grid lg:grid-cols-[1fr_27rem] gap-6">
         <div className="flex gap-6 flex-col">
-          <ResolvedTickets />
-          <ResponseTime />
+          <TeamTicketsBarChart />
+          <ResponseTimeCards />
         </div>
         <div className="flex flex-col gap-6">
-          <PendingTicket />
-          <PendingApproval />
-          <CategoryChart />
+          <PendingTicketCard />
+          <PendingApprovalCard />
+          <CategoryPieChart />
         </div>
       </div>
 
       <div className="mt-6 flex flex-col gap-6">
         <ChangeRequestLineChart />
-        <AwaitingApprovalTable />
-        <TicketsTable />
-        <TicketResolutionBarChart />
+        <PendingRequestsTable />
+        <IncidentTicketsTable />
+        <ResolutionBarChart />
         <div className="grid md:grid-cols-2 gap-6">
           <ChangeRequestBarChart />
-          <TeamTicketsTable />
+          <RequestTicketsTable />
         </div>
       </div>
     </div>

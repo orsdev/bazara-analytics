@@ -3,7 +3,7 @@ import { buildQueryParams } from '@/utils';
 export const dashboardService = {
   keys: {
     metrics: ['dashboard', 'metrics'] as const,
-    resolvedTickets: ['dashboard', 'resolved-tickets'] as const,
+    teamTicketsMetrics: ['dashboard', 'team-tickets-metrics'] as const,
     pendingTickets: ['dashboard', 'pending-tickets'] as const,
     pendingApprovals: ['dashboard', 'pending-approvals'] as const,
     categoryResults: ['dashboard', 'category-results'] as const,
@@ -19,8 +19,8 @@ export const dashboardService = {
     url: '/dashboard/metrics',
     method: 'GET'
   }),
-  getResolvedTickets: () => ({
-    url: '/dashboard/resolved-tickets',
+  getTeamTicketsMetrics: () => ({
+    url: '/dashboard/metrics/team-ticket',
     method: 'GET'
   }),
   getPendingTickets: () => ({

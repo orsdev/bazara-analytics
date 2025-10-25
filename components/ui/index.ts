@@ -9,3 +9,4 @@ export * from './cards';
 export * from './skeleton';
 export * from './spinner';
 export * from './modals';
+export * from './footer-support';
