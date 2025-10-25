@@ -2,7 +2,9 @@ import {
   DashboardMetric,
   ResolvedTicketAgent,
   PendingTicket,
-  PendingApproval
+  PendingApproval,
+  TicketResolutionData,
+  ChangeRequestStatusData
 } from '@/features/dashboard/types';
 import { Teams } from '@/types';
 
@@ -469,4 +471,25 @@ export const requestsData = [
     assignedTo: 'Rhodha Samson',
     team: Teams.STRATEGIC_SPARKS
   }
+];
+
+export const ticketResolutionData: TicketResolutionData = [
+  { month: '2024-01-01', closed: 650, open: 850 },
+  { month: '2024-02-01', closed: 520, open: 1050 },
+  { month: '2024-03-01', closed: 480, open: 400 },
+  { month: '2024-04-01', closed: 530, open: 750 },
+  { month: '2024-05-01', closed: 280, open: 600 },
+  { month: '2024-06-01', closed: 650, open: 550 },
+  { month: '2024-07-01', closed: 650, open: 800 },
+  { month: '2024-08-01', closed: 550, open: 950 },
+  { month: '2024-09-01', closed: 570, open: 850 },
+  { month: '2024-10-01', closed: 650, open: 500 },
+  { month: '2024-11-01', closed: 450, open: 720 },
+  { month: '2024-12-01', closed: 450, open: 750 }
+];
+
+export const changeRequestStatusData: ChangeRequestStatusData = [
+  { name: 'Open', value: 280 },
+  { name: 'Work in Progress', value: 380 },
+  { name: 'Closed', value: 240 }
 ];

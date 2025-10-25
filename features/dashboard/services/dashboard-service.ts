@@ -8,6 +8,8 @@ export const dashboardService = {
     pendingApprovals: ['dashboard', 'pending-approvals'] as const,
     categoryResults: ['dashboard', 'category-results'] as const,
     responseTime: ['dashboard', 'response-time'] as const,
+    ticketResolution: ['dashboard', 'ticket-resolution'] as const,
+    changeRequestStatus: ['dashboard', 'change-request-status'] as const,
     changeRequests: (filter: Record<string, string>) =>
       ['dashboard', 'change-requests', filter] as const,
     requests: (filter: Record<string, string>) =>
@@ -50,5 +52,13 @@ export const dashboardService = {
       url: `/dashboard/change-requests${queryParams ? `?${queryParams}` : ''}`,
       method: 'GET'
     };
-  }
+  },
+  getTicketResolution: () => ({
+    url: '/dashboard/ticket-resolution',
+    method: 'GET'
+  }),
+  getChangeRequestStatus: () => ({
+    url: '/dashboard/change-request-status',
+    method: 'GET'
+  })
 };

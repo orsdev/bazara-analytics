@@ -24,5 +24,6 @@ export enum Teams {
   PRECISION_TASKFORCE = 'Precision Taskforce',
   UNITY_ENGINEERS = 'Unity Engineers',
   AGILE_ACHIEVERS = 'Agile Achievers',
-  SYNERGY_SQUAD = 'Synergy Squad'
+  SYNERGY_SQUAD = 'Synergy Squad',
+  NONE = 'None'
 }

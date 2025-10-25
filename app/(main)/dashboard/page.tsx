@@ -4,12 +4,15 @@ import {
   ResolvedTickets,
   PendingTicket,
   PendingApproval,
-  ResultCategory,
-  ChangeRequest,
+  CategoryChart,
+  ChangeRequestLineChart,
   AwaitingApprovalTable,
-  TicketsTable
+  TicketsTable,
+  TicketResolutionBarChart,
+  TeamTicketsTable
 } from '@/features/dashboard/components';
 import { ResponseTime } from '@/features/dashboard/components';
+import { ChangeRequestBarChart } from '@/features/dashboard/components/change-request-bar-chart';
 
 export default function DashboardPage() {
   return (
@@ -24,14 +27,25 @@ export default function DashboardPage() {
         <div className="flex flex-col gap-6">
           <PendingTicket />
           <PendingApproval />
-          <ResultCategory />
+          <CategoryChart />
         </div>
       </div>
 
       <div className="mt-6 flex flex-col gap-6">
-        <ChangeRequest />
+        <ChangeRequestLineChart />
         <AwaitingApprovalTable />
         <TicketsTable />
+        <TicketResolutionBarChart />
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <ChangeRequestBarChart />
+          </div>
+
+          <div>
+            <TeamTicketsTable />
+          </div>
+        </div>
       </div>
     </div>
   );
