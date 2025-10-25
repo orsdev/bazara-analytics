@@ -34,7 +34,9 @@ const nextConfig: NextConfig = {
     optimizePackageImports: [
       'lucide-react',
       'recharts',
-      '@tanstack/react-table'
+      '@tanstack/react-table',
+      'react-hot-toast',
+      'date-fns'
     ],
     optimizeCss: true,
     scrollRestoration: true
