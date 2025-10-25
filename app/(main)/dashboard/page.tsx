@@ -1,98 +1,21 @@
-import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
-import { DashboardHeader, MetricsCards } from '@/features/dashboard/components';
+import {
+  DashboardHeader,
+  MetricsCards,
+  PendingRequestsTable,
+  RequestTicketsTable,
+  IncidentTicketsTable,
+  ResponseTimeCards,
+  PendingTicketCard,
+  PendingApprovalCard,
+  TeamTicketsBarChart,
+  CategoryPieChart,
+  ChangeRequestLineChart,
+  ResolutionBarChart,
+  ChangeRequestBarChart
+} from '@/features/dashboard/components';
 import { Skeleton } from '@/components/ui';
-
-// Tables
-const PendingRequestsTable = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.PendingRequestsTable
-    })),
-  { loading: () => <Skeleton className="h-96 w-full" /> }
-);
-
-const RequestTicketsTable = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.RequestTicketsTable
-    })),
-  { loading: () => <Skeleton className="h-96 w-full" /> }
-);
-
-const IncidentTicketsTable = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.IncidentTicketsTable
-    })),
-  { loading: () => <Skeleton className="h-80 w-full" /> }
-);
-
-// Cards
-const ResponseTimeCards = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.ResponseTimeCards
-    })),
-  { loading: () => <Skeleton className="h-64 w-full" /> }
-);
-
-const PendingTicketCard = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.PendingTicketCard
-    })),
-  { loading: () => <Skeleton className="h-48 w-full" /> }
-);
-
-const PendingApprovalCard = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.PendingApprovalCard
-    })),
-  { loading: () => <Skeleton className="h-48 w-full" /> }
-);
-
-// Charts
-const TeamTicketsBarChart = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.TeamTicketsBarChart
-    })),
-  { loading: () => <Skeleton className="h-64 w-full" /> }
-);
-
-const CategoryPieChart = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.CategoryPieChart
-    })),
-  { loading: () => <Skeleton className="h-64 w-full" /> }
-);
-
-const ChangeRequestLineChart = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.ChangeRequestLineChart
-    })),
-  { loading: () => <Skeleton className="h-80 w-full" /> }
-);
-
-const ResolutionBarChart = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.ResolutionBarChart
-    })),
-  { loading: () => <Skeleton className="h-80 w-full" /> }
-);
-
-const ChangeRequestBarChart = dynamic(
-  () =>
-    import('@/features/dashboard/components').then((mod) => ({
-      default: mod.ChangeRequestBarChart
-    })),
-  { loading: () => <Skeleton className="h-80 w-full" /> }
-);
 
 export const metadata: Metadata = {
   title: 'Dashboard',
@@ -120,24 +43,46 @@ export default function DashboardPage() {
       <MetricsCards />
       <div className="grid lg:grid-cols-[1fr_27rem] gap-6">
         <div className="flex gap-6 flex-col">
-          <TeamTicketsBarChart />
-          <ResponseTimeCards />
+          <Suspense fallback={<Skeleton className="h-64 w-full" />}>
+            <TeamTicketsBarChart />
+          </Suspense>
+          <Suspense fallback={<Skeleton className="h-64 w-full" />}>
+            <ResponseTimeCards />
+          </Suspense>
         </div>
         <div className="flex flex-col gap-6">
-          <PendingTicketCard />
-          <PendingApprovalCard />
-          <CategoryPieChart />
+          <Suspense fallback={<Skeleton className="h-48 w-full" />}>
+            <PendingTicketCard />
+          </Suspense>
+          <Suspense fallback={<Skeleton className="h-48 w-full" />}>
+            <PendingApprovalCard />
+          </Suspense>
+          <Suspense fallback={<Skeleton className="h-64 w-full" />}>
+            <CategoryPieChart />
+          </Suspense>
         </div>
       </div>
 
       <div className="mt-6 flex flex-col gap-6">
-        <ChangeRequestLineChart />
-        <PendingRequestsTable />
-        <IncidentTicketsTable />
-        <ResolutionBarChart />
+        <Suspense fallback={<Skeleton className="h-80 w-full" />}>
+          <ChangeRequestLineChart />
+        </Suspense>
+        <Suspense fallback={<Skeleton className="h-96 w-full" />}>
+          <PendingRequestsTable />
+        </Suspense>
+        <Suspense fallback={<Skeleton className="h-80 w-full" />}>
+          <IncidentTicketsTable />
+        </Suspense>
+        <Suspense fallback={<Skeleton className="h-80 w-full" />}>
+          <ResolutionBarChart />
+        </Suspense>
         <div className="grid md:grid-cols-2 gap-6">
-          <ChangeRequestBarChart />
-          <RequestTicketsTable />
+          <Suspense fallback={<Skeleton className="h-80 w-full" />}>
+            <ChangeRequestBarChart />
+          </Suspense>
+          <Suspense fallback={<Skeleton className="h-96 w-full" />}>
+            <RequestTicketsTable />
+          </Suspense>
         </div>
       </div>
     </div>
