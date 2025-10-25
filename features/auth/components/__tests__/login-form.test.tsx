@@ -12,12 +12,11 @@ jest.mock('@/lib/validations', () => ({
   LoginFormData: {}
 }));
 
-/* eslint-disable @typescript-eslint/no-require-imports */
 const mockUseAuth = require('../../hooks/use-auth').useAuth;
-/* eslint-enable @typescript-eslint/no-require-imports */
 
 describe('LoginForm', () => {
   const mockLogin = jest.fn();
+  const mockPush = jest.fn();
 
   beforeEach(() => {
     mockUseAuth.mockReturnValue({

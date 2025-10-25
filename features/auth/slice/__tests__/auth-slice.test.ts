@@ -8,9 +8,7 @@ jest.mock('@/lib/api', () => ({
   }
 }));
 
-/* eslint-disable @typescript-eslint/no-require-imports */
 const mockApi = require('@/lib/api').api;
-/* eslint-enable @typescript-eslint/no-require-imports */
 
 describe('useAuthSlice', () => {
   beforeEach(() => {

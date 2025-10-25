@@ -37,6 +37,9 @@ export const RangeDatePicker = ({
 }: RangeDatePickerProps) => {
   return (
     <div className="flex flex-col justify-center items-center gap-2 w-full relative cursor-pointer">
+      <label htmlFor={name} className="sr-only">
+        {placeholder}
+      </label>
       <ReactDatePicker
         name={name}
         onChange={(dates) => {

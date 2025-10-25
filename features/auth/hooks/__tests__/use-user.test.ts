@@ -22,12 +22,10 @@ jest.mock('@tanstack/react-query', () => ({
   useQuery: jest.fn()
 }));
 
-/* eslint-disable @typescript-eslint/no-require-imports */
 const mockApi = require('@/lib').api;
 const mockAuthService = require('../../services/auth-service').authService;
 const mockUseAuthSlice = require('../../slice/auth-slice').useAuthSlice;
 const mockUseQuery = require('@tanstack/react-query').useQuery;
-/* eslint-enable @typescript-eslint/no-require-imports */
 
 describe('useUser', () => {
   const mockHandleLogout = jest.fn();
