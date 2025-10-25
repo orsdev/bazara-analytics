@@ -1,3 +1,5 @@
+'use client';
+
 import { FooterSupportSVGIcon } from './icons';
 
 export const FooterSupport = () => {
