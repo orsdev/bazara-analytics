@@ -38,7 +38,7 @@ A modern, full-featured analytics dashboard built with Next.js 16, TypeScript, a
    Create a `.env.local` file in the root directory:
 
    ```env
-   BASE_URL=http://localhost:3000
+   BASE_URL=http://localhost:3000/api
    ```
 
 ## 🏃 Running the Application
