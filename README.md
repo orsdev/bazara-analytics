@@ -24,7 +24,7 @@ A modern, full-featured analytics dashboard built with Next.js 16, TypeScript, a
 
    ```bash
    git clone <repository-url>
-   cd bazara
+   cd bazara-analytics
    ```
 
 2. **Install dependencies**
@@ -144,14 +144,13 @@ All API routes in `/app/api/` return mock data:
 ## 🏗️ Project Structure
 
 ```
-bazara/
+bazara-analytics/
 ├── app/                      # Next.js app directory
 │   ├── (auth)/              # Auth routes (login)
 │   ├── (main)/              # Protected routes (dashboard)
 │   └── api/                 # API routes (mock endpoints)
 ├── components/              # Reusable UI components
 │   ├── __tests__/          # Component tests
-│   ├── layouts/            # Layout components
 │   └── ui/                 # UI primitives
 ├── features/               # Feature-based modules
 │   ├── auth/              # Authentication feature
@@ -259,19 +258,3 @@ bazara/
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## 📄 License
-
-This project is private and proprietary.
-
-## 👥 Authors
-
-Bazara Technologies Team
-
-## 🐛 Known Issues
-
-None at this time. Please report issues via the issue tracker.
-
-## 📞 Support
-
-For support, email support@bazara.com or open an issue in the repository.
