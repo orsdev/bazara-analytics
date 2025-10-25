@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { useResolvedTickets } from '../use-resolved-tickets';
+import { useTeamTicketsMetrics } from '../use-team-tickets-metrics';
 import * as hooks from '@/hooks';
 import { UseQueryResult } from '@tanstack/react-query';
 
@@ -28,7 +28,7 @@ describe('useResolvedTickets', () => {
       mockResult as UseQueryResult<{ data: unknown }, unknown>
     );
 
-    const { result } = renderHook(() => useResolvedTickets());
+    const { result } = renderHook(() => useTeamTicketsMetrics());
 
     expect(result.current.isLoading).toBe(true);
     expect(result.current.hasAgents).toBe(false);
@@ -46,7 +46,7 @@ describe('useResolvedTickets', () => {
       mockResult as UseQueryResult<{ data: unknown }, unknown>
     );
 
-    const { result } = renderHook(() => useResolvedTickets());
+    const { result } = renderHook(() => useTeamTicketsMetrics());
 
     expect(result.current.agents).toEqual([]);
     expect(result.current.hasAgents).toBe(false);
@@ -71,7 +71,7 @@ describe('useResolvedTickets', () => {
       mockResult as UseQueryResult<typeof mockData, unknown>
     );
 
-    const { result } = renderHook(() => useResolvedTickets());
+    const { result } = renderHook(() => useTeamTicketsMetrics());
 
     await waitFor(() => {
       expect(result.current.agents).toHaveLength(2);
@@ -101,7 +101,7 @@ describe('useResolvedTickets', () => {
       mockResult as UseQueryResult<typeof mockData, unknown>
     );
 
-    const { result } = renderHook(() => useResolvedTickets());
+    const { result } = renderHook(() => useTeamTicketsMetrics());
 
     expect(result.current.hasAgents).toBe(true);
   });
@@ -122,7 +122,7 @@ describe('useResolvedTickets', () => {
       mockResult as unknown as UseQueryResult<typeof mockData, unknown>
     );
 
-    const { result } = renderHook(() => useResolvedTickets());
+    const { result } = renderHook(() => useTeamTicketsMetrics());
 
     expect(result.current.hasAgents).toBe(false);
   });
@@ -141,7 +141,7 @@ describe('useResolvedTickets', () => {
       mockResult as UseQueryResult<{ data: unknown }, unknown>
     );
 
-    const { result } = renderHook(() => useResolvedTickets());
+    const { result } = renderHook(() => useTeamTicketsMetrics());
 
     expect(result.current.error).toBe(mockError);
   });
@@ -162,7 +162,7 @@ describe('useResolvedTickets', () => {
       mockResult as UseQueryResult<typeof mockData, unknown>
     );
 
-    const { result } = renderHook(() => useResolvedTickets());
+    const { result } = renderHook(() => useTeamTicketsMetrics());
 
     expect(result.current.agents).toEqual([]);
     expect(result.current.hasAgents).toBe(false);
@@ -188,7 +188,7 @@ describe('useResolvedTickets', () => {
       mockResult as UseQueryResult<typeof mockData, unknown>
     );
 
-    const { result } = renderHook(() => useResolvedTickets());
+    const { result } = renderHook(() => useTeamTicketsMetrics());
 
     expect(result.current.agents).toHaveLength(3);
     expect(result.current.hasAgents).toBe(true);

@@ -19,8 +19,8 @@ export default async function MainLayout({ children }: ChildrenProps) {
           <ControlPanel />
         </div>
         <div className="p-6 relative z-3">{children}</div>
+        <FooterSupport />
       </main>
-      <FooterSupport />
     </AuthProvider>
   );
 }

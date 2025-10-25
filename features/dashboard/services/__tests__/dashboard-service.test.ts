@@ -6,10 +6,10 @@ describe('dashboardService', () => {
       expect(dashboardService.keys.metrics).toEqual(['dashboard', 'metrics']);
     });
 
-    it('has resolvedTickets key', () => {
-      expect(dashboardService.keys.resolvedTickets).toEqual([
+    it('has teamTicketsMetrics key', () => {
+      expect(dashboardService.keys.teamTicketsMetrics).toEqual([
         'dashboard',
-        'resolved-tickets'
+        'team-tickets-metrics'
       ]);
     });
 
@@ -84,11 +84,11 @@ describe('dashboardService', () => {
     });
   });
 
-  describe('getResolvedTickets', () => {
+  describe('getTeamTicketsMetrics', () => {
     it('returns correct config', () => {
-      const result = dashboardService.getResolvedTickets();
+      const result = dashboardService.getTeamTicketsMetrics();
       expect(result).toEqual({
-        url: '/dashboard/resolved-tickets',
+        url: '/dashboard/metrics/team-ticket',
         method: 'GET'
       });
     });
@@ -210,7 +210,7 @@ describe('dashboardService', () => {
   describe('service structure', () => {
     it('has all required methods', () => {
       expect(dashboardService).toHaveProperty('getMetrics');
-      expect(dashboardService).toHaveProperty('getResolvedTickets');
+      expect(dashboardService).toHaveProperty('getTeamTicketsMetrics');
       expect(dashboardService).toHaveProperty('getPendingTickets');
       expect(dashboardService).toHaveProperty('getPendingApprovals');
       expect(dashboardService).toHaveProperty('getRequests');
@@ -224,7 +224,7 @@ describe('dashboardService', () => {
     it('all methods return objects with url and method', () => {
       const methods = [
         dashboardService.getMetrics(),
-        dashboardService.getResolvedTickets(),
+        dashboardService.getTeamTicketsMetrics(),
         dashboardService.getPendingTickets(),
         dashboardService.getPendingApprovals(),
         dashboardService.getRequests({}),

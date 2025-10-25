@@ -1,5 +1,4 @@
 export { DashboardHeader } from './dashboard-header';
-export { MetricsGrid } from './metrics-grid';
 export {
   ChangeRequestBarChart,
   ChangeRequestLineChart,

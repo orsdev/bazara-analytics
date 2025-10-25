@@ -13,10 +13,10 @@ import {
   XAxis,
   YAxis
 } from 'recharts';
-import { useResolvedTickets } from '../../hooks/use-resolved-tickets';
+import { useTeamTicketsMetrics } from '../../hooks/use-team-tickets-metrics';
 
 export const TeamTicketsBarChart = () => {
-  const { agents, hasAgents, isLoading } = useResolvedTickets();
+  const { agents, hasAgents, isLoading } = useTeamTicketsMetrics();
 
   if (isLoading) {
     return (

@@ -4,14 +4,14 @@ import { useCustomQuery } from '@/hooks';
 import { dashboardService } from '../services/dashboard-service';
 import { ResolvedTicketAgent } from '../types';
 
-export function useResolvedTickets() {
+export function useTeamTicketsMetrics() {
   const {
     data: responseData,
     isLoading,
     error
   } = useCustomQuery<{ data: ResolvedTicketAgent[] }>({
-    queryKey: dashboardService.keys.resolvedTickets,
-    url: dashboardService.getResolvedTickets().url
+    queryKey: dashboardService.keys.teamTicketsMetrics,
+    url: dashboardService.getTeamTicketsMetrics().url
   });
 
   const response = responseData?.data || [];

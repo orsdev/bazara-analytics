@@ -6,7 +6,7 @@ export { useDashboardMetrics } from './use-dashboard-metrics';
 export { usePendingApprovals } from './use-pending-approvals';
 export { usePendingTickets } from './use-pending-tickets';
 export { useRequests } from './use-requests';
-export { useResolvedTickets } from './use-resolved-tickets';
+export { useTeamTicketsMetrics } from './use-team-tickets-metrics';
 export { useResponseTime } from './use-response-time';
 export { useTicketResolution } from './use-ticket-resolution';
 export { useTicketsFilter } from './use-tickets-filter';

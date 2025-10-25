@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { TeamTicketsBarChart } from '../team-tickets-bar-chart';
-import * as hooks from '../../../hooks/use-resolved-tickets';
+import * as hooks from '../../../hooks/use-team-tickets-metrics';
 
-jest.mock('../../../hooks/use-resolved-tickets');
+jest.mock('../../../hooks/use-team-tickets-metrics');
 jest.mock('recharts', () => ({
   ResponsiveContainer: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="responsive-container">{children}</div>
@@ -36,17 +36,18 @@ jest.mock('recharts', () => ({
   Cell: () => <div data-testid="cell" />
 }));
 
-const mockUseResolvedTickets = hooks.useResolvedTickets as jest.MockedFunction<
-  typeof hooks.useResolvedTickets
->;
+const mockUseTeamTicketsMetrics =
+  hooks.useTeamTicketsMetrics as jest.MockedFunction<
+    typeof hooks.useTeamTicketsMetrics
+  >;
 
-describe('ResolvedTickets', () => {
+describe('TeamTicketsBarChart', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('renders loading skeleton when loading', () => {
-    mockUseResolvedTickets.mockReturnValue({
+    mockUseTeamTicketsMetrics.mockReturnValue({
       agents: [],
       hasAgents: false,
       isLoading: true,
@@ -58,7 +59,7 @@ describe('ResolvedTickets', () => {
   });
 
   it('renders title', () => {
-    mockUseResolvedTickets.mockReturnValue({
+    mockUseTeamTicketsMetrics.mockReturnValue({
       agents: [{ id: '1', name: 'Agent 1', ticketsResolved: 50 }],
       hasAgents: true,
       isLoading: false,
@@ -72,7 +73,7 @@ describe('ResolvedTickets', () => {
   });
 
   it('renders empty state when no agents', () => {
-    mockUseResolvedTickets.mockReturnValue({
+    mockUseTeamTicketsMetrics.mockReturnValue({
       agents: [],
       hasAgents: false,
       isLoading: false,
@@ -87,7 +88,7 @@ describe('ResolvedTickets', () => {
   });
 
   it('renders chart when agents exist', () => {
-    mockUseResolvedTickets.mockReturnValue({
+    mockUseTeamTicketsMetrics.mockReturnValue({
       agents: [
         { id: '1', name: 'Agent 1', ticketsResolved: 50 },
         { id: '2', name: 'Agent 2', ticketsResolved: 30 }
@@ -102,7 +103,7 @@ describe('ResolvedTickets', () => {
   });
 
   it('renders expand button', () => {
-    mockUseResolvedTickets.mockReturnValue({
+    mockUseTeamTicketsMetrics.mockReturnValue({
       agents: [],
       hasAgents: false,
       isLoading: false,
@@ -114,7 +115,7 @@ describe('ResolvedTickets', () => {
   });
 
   it('renders more options button', () => {
-    mockUseResolvedTickets.mockReturnValue({
+    mockUseTeamTicketsMetrics.mockReturnValue({
       agents: [],
       hasAgents: false,
       isLoading: false,
