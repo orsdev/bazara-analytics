@@ -7,3 +7,4 @@ export * from './result-category';
 export * from './response-time';
 export * from './change-request';
 export * from './awaiting-approval-table';
+export * from './tickets-table';

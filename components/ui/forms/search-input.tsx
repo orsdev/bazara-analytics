@@ -2,31 +2,32 @@
 
 import { Search } from 'lucide-react';
 import { Input, InputProps } from './input';
-import { useState } from 'react';
 import { cn } from '@/lib';
 
 interface SearchInputProps extends InputProps {
   showKeyboardShortcut?: boolean;
   className?: string;
+  value: string;
+  handleSearchChange: (value: string) => void;
 }
 
 export const SearchInput = ({
   placeholder = 'Search...',
   showKeyboardShortcut = false,
   className,
+  value,
+  handleSearchChange,
   ...props
 }: SearchInputProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
-
   return (
     <div className="relative w-full flex items-center h-[2.19rem]">
       <Search size={16} className="absolute left-2 opacity-50" />
       <Input
         placeholder={placeholder}
         {...props}
-        value={searchQuery}
+        value={value}
         onChange={(e) => {
-          setSearchQuery(e.target.value);
+          handleSearchChange(e.target.value);
         }}
         className={cn(
           'pl-7.5 h-9.5 text-sm! font-normal! placeholder:opacity-80 bg-gray-100',

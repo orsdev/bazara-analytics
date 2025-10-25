@@ -1,3 +1,5 @@
+import { Teams } from '@/types';
+
 export interface LoginPayload {
   email: string;
   password: string;
@@ -8,6 +10,7 @@ export interface AuthUser {
   email: string;
   name: string;
   avatar: string;
+  team: Teams;
 }
 
 export interface AuthSliceState {

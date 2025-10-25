@@ -3,10 +3,12 @@
 import { SearchInput } from '../forms';
 import { EditSVGIcon } from '../icons';
 import { PanelSelector } from './panel-selector';
+import { useState } from 'react';
 
 export const ControlPanel = () => {
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+  const [search, setSearch] = useState('');
+  const handleSearch = (value: string) => {
+    setSearch(value);
   };
   return (
     <div className="h-11 w-full border-b p-2 bg-secondary">
@@ -24,7 +26,8 @@ export const ControlPanel = () => {
           <SearchInput
             placeholder="Search in service request"
             className="h-7 border-0"
-            onChange={handleSearch}
+            value={search}
+            handleSearchChange={handleSearch}
             showKeyboardShortcut
           />
         </div>

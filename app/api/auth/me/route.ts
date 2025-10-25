@@ -1,4 +1,5 @@
 import { authTokenKey } from '@/constants';
+import { Teams } from '@/types';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
@@ -24,7 +25,8 @@ export async function GET() {
       id: 'user-1',
       email: 'admin@example.com',
       name: 'Daniel John',
-      avatar: 'https://avatar.iran.liara.run/public/27'
+      avatar: 'https://avatar.iran.liara.run/public/27',
+      team: Teams.STRATEGIC_SPARKS
     };
 
     return NextResponse.json({

@@ -4,6 +4,7 @@ import {
   PendingTicket,
   PendingApproval
 } from '@/features/dashboard/types';
+import { Teams } from '@/types';
 
 export const resolvedTicketsData: ResolvedTicketAgent[] = [
   {
@@ -217,7 +218,9 @@ export const requestsData = [
     createdBy: 'Cynthia Njoku',
     createdAt: '2025-10-24T21:41:00+01:00',
     dueDate: '2025-10-24T21:41:00+01:00',
-    status: 'Pending'
+    status: 'Pending',
+    assignedTo: 'Chike Adebayo',
+    team: Teams.AGILE_ACHIEVERS
   },
   {
     title: 'Two-Factor Authentication Setup Re: Service Request',
@@ -228,7 +231,9 @@ export const requestsData = [
     createdBy: 'Bayo Adebayo',
     createdAt: '2025-11-24T21:41:00+01:00',
     dueDate: '2025-11-24T21:41:00+01:00',
-    status: 'Approved'
+    status: 'Approved',
+    assignedTo: 'Ngozi Eze',
+    team: Teams.INNOVATION_PIONEERS
   },
   {
     title: 'Login Failure - Credentials Not Work',
@@ -239,7 +244,9 @@ export const requestsData = [
     createdBy: 'Chioma Nwosu',
     createdAt: '2025-12-24T21:41:00+01:00',
     dueDate: '2025-12-24T21:41:00+01:00',
-    status: 'Declined'
+    status: 'Declined',
+    assignedTo: 'Emeka Nnamdi',
+    team: Teams.CREATIVE_CATALYSTS
   },
   {
     title: 'Locked Out of System - Need Passw',
@@ -250,7 +257,9 @@ export const requestsData = [
     createdBy: 'Chukwuemeka Eze',
     createdAt: '2026-01-24T21:41:00+01:00',
     dueDate: '2026-01-24T21:41:00+01:00',
-    status: 'Pending'
+    status: 'Pending',
+    assignedTo: 'Adaeze Chukwu',
+    team: Teams.PRECISION_TASKFORCE
   },
   {
     title: 'System Upgrade Request',
@@ -261,7 +270,9 @@ export const requestsData = [
     createdBy: 'Folake Adeyemi',
     createdAt: '2026-02-24T21:41:00+01:00',
     dueDate: '2026-02-24T21:41:00+01:00',
-    status: 'Approved'
+    status: 'Approved',
+    assignedTo: 'Lanre Olayinka',
+    team: Teams.UNITY_ENGINEERS
   },
   {
     title: 'Password Reset Request',
@@ -272,7 +283,9 @@ export const requestsData = [
     createdBy: 'Gbenga Ogunleye',
     createdAt: '2026-03-24T21:41:00+01:00',
     dueDate: '2026-03-24T21:41:00+01:00',
-    status: 'Declined'
+    status: 'Declined',
+    assignedTo: 'Halima Ibrahim',
+    team: Teams.TECH_TRAILBLAZERS
   },
   {
     title: 'Network Issue Report',
@@ -283,7 +296,9 @@ export const requestsData = [
     createdBy: 'Halima Ibrahim',
     createdAt: '2026-04-24T21:41:00+01:00',
     dueDate: '2026-04-24T21:41:00+01:00',
-    status: 'Pending'
+    status: 'Pending',
+    assignedTo: 'Ibrahim Musa',
+    team: Teams.TECH_TRAILBLAZERS
   },
   {
     title: 'Security Audit Request',
@@ -294,7 +309,9 @@ export const requestsData = [
     createdBy: 'Ibrahim Musa',
     createdAt: '2026-05-24T21:41:00+01:00',
     dueDate: '2026-05-24T21:41:00+01:00',
-    status: 'Approved'
+    status: 'Approved',
+    assignedTo: 'Kemi Adebayo',
+    team: Teams.PRECISION_TASKFORCE
   },
   {
     title: 'Access Request',
@@ -305,7 +322,9 @@ export const requestsData = [
     createdBy: 'Kemi Adebayo',
     createdAt: '2026-06-24T21:41:00+01:00',
     dueDate: '2026-06-24T21:41:00+01:00',
-    status: 'Declined'
+    status: 'Declined',
+    assignedTo: 'Funmi Adeolu',
+    team: Teams.UNITY_ENGINEERS
   },
   {
     title: 'Server Downtime Report',
@@ -316,7 +335,9 @@ export const requestsData = [
     createdBy: 'Lanre Olayinka',
     createdAt: '2026-07-24T21:41:00+01:00',
     dueDate: '2026-07-24T21:41:00+01:00',
-    status: 'Pending'
+    status: 'Pending',
+    assignedTo: 'Gbadebo Okafor',
+    team: Teams.DYNAMIC_DEVELOPERS
   },
   {
     title: 'Software Patch Request',
@@ -327,7 +348,9 @@ export const requestsData = [
     createdBy: 'Ngozi Eze',
     createdAt: '2026-08-24T21:41:00+01:00',
     dueDate: '2026-08-24T21:41:00+01:00',
-    status: 'Approved'
+    status: 'Approved',
+    assignedTo: 'Hauwa Suleiman',
+    team: Teams.PRECISION_TASKFORCE
   },
   {
     title: 'Database Maintenance Request',
@@ -338,7 +361,9 @@ export const requestsData = [
     createdBy: 'Adaeze Chukwu',
     createdAt: '2026-10-24T21:41:00+01:00',
     dueDate: '2026-10-24T21:41:00+01:00',
-    status: 'Pending'
+    status: 'Pending',
+    assignedTo: 'Babafemi Ojo',
+    team: Teams.CREATIVE_CATALYSTS
   },
   {
     title: 'Firewall Configuration Update',
@@ -349,7 +374,9 @@ export const requestsData = [
     createdBy: 'Emeka Nnamdi',
     createdAt: '2026-11-24T21:41:00+01:00',
     dueDate: '2026-11-24T21:41:00+01:00',
-    status: 'Approved'
+    status: 'Approved',
+    assignedTo: 'Rhodha Samson',
+    team: Teams.SYNERGY_SQUAD
   },
   {
     title: 'Email Server Outage',
@@ -360,7 +387,9 @@ export const requestsData = [
     createdBy: 'Funmi Adeolu',
     createdAt: '2026-12-24T21:41:00+01:00',
     dueDate: '2026-12-24T21:41:00+01:00',
-    status: 'Declined'
+    status: 'Declined',
+    assignedTo: 'Odion James',
+    team: Teams.UNITY_ENGINEERS
   },
   {
     title: 'VPN Access Request',
@@ -371,7 +400,9 @@ export const requestsData = [
     createdBy: 'Gbadebo Okafor',
     createdAt: '2027-01-24T21:41:00+01:00',
     dueDate: '2027-01-24T21:41:00+01:00',
-    status: 'Pending'
+    status: 'Pending',
+    assignedTo: 'Olaoluwa Olaoluwa',
+    team: Teams.VISIONARY_VANGUARD
   },
   {
     title: 'Backup System Failure',
@@ -382,6 +413,60 @@ export const requestsData = [
     createdBy: 'Hauwa Suleiman',
     createdAt: '2027-02-24T21:41:00+01:00',
     dueDate: '2027-02-24T21:41:00+01:00',
-    status: 'Approved'
+    status: 'Approved',
+    assignedTo: 'James Olaoluwa',
+    team: Teams.PRECISION_TASKFORCE
+  },
+  {
+    title: 'System Crash – Unable to Access',
+    module: 'Incident Management',
+    id: 'INC-79724',
+    category: 'System and Application',
+    priority: 'Severity 1',
+    createdBy: 'Cynthia Njoku',
+    createdAt: '2025-10-25T00:13:00+01:00',
+    dueDate: '2025-10-25T00:13:00+01:00',
+    status: 'Pending',
+    assignedTo: 'Odion James',
+    team: Teams.STRATEGIC_SPARKS
+  },
+  {
+    title: 'Onboarding process taking more time',
+    module: 'Incident Management',
+    id: 'INC-84625',
+    category: 'Onboarding',
+    priority: 'Severity 1',
+    createdBy: 'Cynthia Njoku',
+    createdAt: '2025-11-25T00:13:00+01:00',
+    dueDate: '2025-11-25T00:13:00+01:00',
+    status: 'Pending',
+    assignedTo: 'Babafemi Ojo',
+    team: Teams.STRATEGIC_SPARKS
+  },
+  {
+    title: 'Login Failure – Credentials Not Work',
+    module: 'Incident Management',
+    id: 'INC-65142',
+    category: 'System and Application',
+    priority: 'Severity 1',
+    createdBy: 'Cynthia Njoku',
+    createdAt: '2025-12-25T00:13:00+01:00',
+    dueDate: '2025-12-25T00:13:00+01:00',
+    status: 'Pending',
+    assignedTo: 'Rhodha Samson',
+    team: Teams.STRATEGIC_SPARKS
+  },
+  {
+    title: 'Locked Out of System – Need Passw',
+    module: 'Incident Management',
+    id: 'INC-65142',
+    category: 'Security & Access Issues',
+    priority: 'Severity 1',
+    createdBy: 'Cynthia Njoku',
+    createdAt: '2026-01-25T00:13:00+01:00',
+    dueDate: '2026-01-25T00:13:00+01:00',
+    status: 'Pending',
+    assignedTo: 'Rhodha Samson',
+    team: Teams.STRATEGIC_SPARKS
   }
 ];

@@ -1,3 +1,4 @@
+import { EMPTY_ARRAY } from '@/constants';
 import {
   getCoreRowModel,
   getFacetedRowModel,
@@ -25,8 +26,6 @@ interface DataTableProps<TData> {
   onGlobalFilterChange?(val: string): void;
 }
 
-const emptyArray: never[] = []; // Fixes table.getRowModel().rows multiple rendering
-
 const defaultPageSize = 10;
 
 export const useTable = <TData>({
@@ -36,7 +35,7 @@ export const useTable = <TData>({
   page,
   onGlobalFilterChange,
   onFilterChange,
-  columnFilters = emptyArray,
+  columnFilters = EMPTY_ARRAY,
   manualPagination = true,
   pageSize = defaultPageSize
 }: DataTableProps<TData>) => {
@@ -45,7 +44,7 @@ export const useTable = <TData>({
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
-    data: data ?? emptyArray,
+    data: data ?? EMPTY_ARRAY,
     columns,
     state: {
       pagination: {

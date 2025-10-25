@@ -8,10 +8,10 @@ export const dashboardService = {
     pendingApprovals: ['dashboard', 'pending-approvals'] as const,
     categoryResults: ['dashboard', 'category-results'] as const,
     responseTime: ['dashboard', 'response-time'] as const,
-    changeRequests: (filer: Record<string, string>) =>
-      ['dashboard', 'change-requests', buildQueryParams(filer)] as const,
+    changeRequests: (filter: Record<string, string>) =>
+      ['dashboard', 'change-requests', filter] as const,
     requests: (filter: Record<string, string>) =>
-      ['dashboard', 'requests', buildQueryParams(filter)] as const
+      ['dashboard', 'requests', filter] as const
   },
   getMetrics: () => ({
     url: '/dashboard/metrics',

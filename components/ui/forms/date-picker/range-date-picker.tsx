@@ -19,6 +19,7 @@ interface RangeDatePickerProps {
   endDate: Date | null;
   minDate?: Date;
   maxDate?: Date;
+  placeholder?: string;
   handleChange: ({ from, to }: { from: Date | null; to: Date | null }) => void;
 }
 
@@ -31,7 +32,8 @@ export const RangeDatePicker = ({
   handleChange,
   isDisabled = false,
   showTimeSelect = false,
-  className
+  className,
+  placeholder
 }: RangeDatePickerProps) => {
   return (
     <div className="flex flex-col justify-center items-center gap-2 w-full relative cursor-pointer">
@@ -53,9 +55,10 @@ export const RangeDatePicker = ({
         autoComplete="off"
         selectsRange
         className={cn(
-          'h-[2.13rem] min-h-[2.13rem]! w-full! rounded-[8px] bg-primary/14 text-primary shadow-xs px-5 py-2 font-medium text-sm',
+          'h-[2.13rem] min-h-[2.13rem]! w-full! rounded-[8px] bg-primary/14 text-primary shadow-xs px-5 py-2 font-medium text-sm placeholder:text-primary',
           className
         )}
+        placeholderText={placeholder}
       />
       <div className="absolute right-2 z-10">
         <CalendarDaysSVGIcon />

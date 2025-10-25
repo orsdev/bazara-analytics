@@ -6,7 +6,8 @@ import {
   PendingApproval,
   ResultCategory,
   ChangeRequest,
-  AwaitingApprovalTable
+  AwaitingApprovalTable,
+  TicketsTable
 } from '@/features/dashboard/components';
 import { ResponseTime } from '@/features/dashboard/components';
 
@@ -30,6 +31,7 @@ export default function DashboardPage() {
       <div className="mt-6 flex flex-col gap-6">
         <ChangeRequest />
         <AwaitingApprovalTable />
+        <TicketsTable />
       </div>
     </div>
   );

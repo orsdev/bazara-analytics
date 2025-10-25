@@ -1,10 +1,19 @@
 'use client';
 
-import { ConfirmationModal, DefaultCard, PinchSVGIcon } from '@/components/ui';
+import {
+  Button,
+  ConfirmationModal,
+  DefaultCard,
+  ExportSVGIcon,
+  FilterDropdown,
+  PinchSVGIcon,
+  RangeDatePicker,
+  SearchInput
+} from '@/components/ui';
 import { useTable, useTablePagination } from '@/hooks';
 import { CustomTable } from '@/components/ui/table';
 import { ColumnDef } from '@tanstack/react-table';
-import { useRequests } from '../hooks/use-requests';
+import { useRequests } from '@/features/dashboard/hooks/use-requests';
 import { cn } from '@/lib';
 import { dateFormatter } from '@/utils';
 import { useMemo, useState } from 'react';
@@ -16,8 +25,10 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { MoreVertical } from 'lucide-react';
-import { RequestStatus } from '../types';
-import { Request } from '../types';
+import { Request, RequestStatus } from '../types';
+import { useUser } from '@/features/auth/hooks';
+import { useTicketsFilter } from '../hooks/use-tickets-filter';
+import { format } from 'date-fns';
 
 enum ModalType {
   decline,
@@ -25,12 +36,29 @@ enum ModalType {
   view
 }
 
-export const AwaitingApprovalTable = () => {
+export const TicketsTable = () => {
+  const {
+    searchTerm,
+    handleSearchChange,
+    debouncedSearchValue,
+    selectedStartDate,
+    selectedEndDate,
+    hasDateFilter,
+    setSelectedStartDate,
+    setSelectedEndDate
+  } = useTicketsFilter();
   const [modalType, setModalType] = useState<ModalType>(ModalType.view);
   const [page, setPage] = useState(1);
 
+  const { user } = useUser();
   const { requests, isLoading, isRefetching } = useRequests({
-    status: RequestStatus.PENDING
+    status: RequestStatus.PENDING,
+    team: user?.team || '',
+    search: debouncedSearchValue,
+    ...(hasDateFilter && {
+      startDate: format(selectedStartDate!, 'yyyy-MM-dd'),
+      endDate: format(selectedEndDate!, 'yyyy-MM-dd')
+    })
   });
 
   const columns: ColumnDef<Request>[] = useMemo(
@@ -45,14 +73,19 @@ export const AwaitingApprovalTable = () => {
         )
       },
       {
-        accessorKey: 'module',
-        header: 'Module',
-        cell: ({ row }) => <span>{row.getValue('module')}</span>
-      },
-      {
         accessorKey: 'id',
         header: 'ID',
         cell: ({ row }) => <span>{row.getValue('id')}</span>
+      },
+      {
+        accessorKey: 'category',
+        header: 'Category',
+        cell: ({ row }) => <span>{row.getValue('category')}</span>
+      },
+      {
+        accessorKey: 'priority',
+        header: 'Priority',
+        cell: ({ row }) => <span>{row.getValue('priority')}</span>
       },
       {
         accessorKey: 'createdBy',
@@ -76,6 +109,11 @@ export const AwaitingApprovalTable = () => {
           const formattedDate = date ? dateFormatter(date) : 'N/A';
           return <span>{formattedDate}</span>;
         }
+      },
+      {
+        accessorKey: 'assignedTo',
+        header: 'Assigned To',
+        cell: ({ row }) => <span>{row.getValue('assignedTo')}</span>
       },
       {
         accessorKey: 'status',
@@ -193,28 +231,53 @@ export const AwaitingApprovalTable = () => {
       <ConfirmationModal
         isOpen={modalType === ModalType.approve}
         onClose={handleCloseModal}
-        onConfirm={() => {}}
-        isLoading={false}
         title="Approve Request"
         description="Are you sure you want to approve this request?"
-        confirmText="Approve Request"
-        cancelText="Cancel"
+        onConfirm={() => {}}
       />
       <ConfirmationModal
         isOpen={modalType === ModalType.decline}
         onClose={handleCloseModal}
-        onConfirm={() => {}}
-        isLoading={false}
         title="Decline Request"
         description="Are you sure you want to decline this request?"
-        confirmText="Decline Request"
-        cancelText="Cancel"
+        onConfirm={() => {}}
       />
       <DefaultCard
         headerIcon={<PinchSVGIcon />}
-        title="Awaiting Approval"
+        title="Incident Tickets Assigned to my Team"
         handleMoreOptions={() => {}}
       >
+        <div className="flex items-center justify-between mb-4 gap-4 mt-6 relative z-10 flex-wrap">
+          <div className="max-w-[46.48rem] w-full flex items-center gap-4 flex-wrap">
+            <div className="max-w-87 w-full">
+              <SearchInput
+                placeholder="Search by title"
+                value={searchTerm}
+                className="bg-background"
+                handleSearchChange={handleSearchChange}
+              />
+            </div>
+            <div className="relative z-10 max-w-[13.68rem] w-full">
+              <RangeDatePicker
+                name="range"
+                placeholder="Select range"
+                startDate={selectedStartDate}
+                endDate={selectedEndDate}
+                handleChange={({ from, to }) => {
+                  setSelectedStartDate(from);
+                  setSelectedEndDate(to);
+                }}
+              />
+            </div>
+            <FilterDropdown>...........</FilterDropdown>
+          </div>
+          <div>
+            <Button className="px-4">
+              <ExportSVGIcon />
+              <span> Export </span>
+            </Button>
+          </div>
+        </div>
         <CustomTable
           columns={columns}
           table={table}

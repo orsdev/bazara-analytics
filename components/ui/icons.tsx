@@ -366,3 +366,31 @@ export const CalendarDaysSVGIcon = ({
     />
   </svg>
 );
+
+export const ExportSVGIcon = ({ size = 16, ...restProps }: CustomIconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...restProps}
+  >
+    <path
+      d="M12.0467 9.62L8.00004 13.6667L3.95337 9.62"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M8 2.33334V13.5533"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
