@@ -179,8 +179,9 @@ bazara-analytics/
 
 ### UI & Styling
 
+- **shadcn/ui** - Copy-paste component library (New York style)
 - **Tailwind CSS 4** - Utility-first CSS
-- **Radix UI** - Headless UI components
+- **Radix UI** - Headless UI primitives (via shadcn/ui)
 - **Recharts** - Data visualization
 - **Lucide React** - Icon library
 
@@ -240,7 +241,6 @@ bazara-analytics/
 ## 📚 Additional Documentation
 
 - **[Architecture Decision Record (ADR)](./docs/ADR.md)** - Key architectural decisions
-- **[Testing Guide](./docs/TESTING.md)** - Testing strategies and patterns
 
 ## 🚀 Live Demo
 

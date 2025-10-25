@@ -306,51 +306,63 @@ Coverage Goals:
 
 ## 7. Styling and UI Framework
 
-### Decision: Tailwind CSS 4 + Radix UI + Custom Components
+### Decision: shadcn/ui + Tailwind CSS 4
 
-**Context**: Need modern, accessible, and maintainable styling solution.
+**Context**: Need modern, accessible, and maintainable styling solution with pre-built components.
 
 **Options Considered**:
 
 - Material-UI
 - Chakra UI
-- Tailwind + Radix UI
+- shadcn/ui + Tailwind
+- Headless UI + Tailwind
 - CSS Modules
 
-**Decision**: Tailwind CSS 4 + Radix UI primitives
+**Decision**: shadcn/ui with Tailwind CSS 4
 
 **Rationale**:
 
-**Tailwind CSS**:
+**shadcn/ui**:
+
+- Copy-paste component library (not a dependency)
+- Built on Radix UI primitives for accessibility
+- Fully customizable - components live in your codebase
+- TypeScript-first with excellent type safety
+- New York style variant for modern aesthetics
+- Integrates seamlessly with Tailwind CSS
+
+**Tailwind CSS 4**:
 
 - Utility-first approach
-- No CSS file bloat
+- CSS variables for theming
 - Consistent design system
 - Excellent responsive utilities
 - JIT compilation for optimal bundle size
+- Perfect integration with shadcn/ui
 
-**Radix UI**:
+**Configuration**:
 
-- Unstyled, accessible primitives
-- Full keyboard navigation
-- WCAG 2.1 AA compliant
-- Composable components
-- No design opinions
-
-**Custom Layer**:
-
-- Built on Radix primitives
-- Styled with Tailwind
-- Project-specific components
-- Consistent with design system
+```json
+{
+  "style": "new-york",
+  "rsc": true,
+  "tailwind": {
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "iconLibrary": "lucide"
+}
+```
 
 **Consequences**:
 
-- ✅ Accessibility built-in
-- ✅ Small bundle size
-- ✅ Fast development
-- ✅ Easy customization
-- ⚠️ Verbose HTML classes
+- ✅ Full control over component code
+- ✅ Accessibility built-in (Radix UI foundation)
+- ✅ No package bloat - components are yours
+- ✅ Easy customization and theming
+- ✅ Consistent design system
+- ✅ Fast development with pre-built patterns
+- ⚠️ Need to manage component updates manually
 - ⚠️ Learning curve for Tailwind
 
 ---
