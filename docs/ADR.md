@@ -4,7 +4,6 @@
 
 **Date**: October 2025  
 **Status**: Active  
-**Stakeholders**: Development Team, Product Management
 
 ---
 
